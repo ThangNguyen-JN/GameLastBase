@@ -7,12 +7,6 @@ public class TargetFinder : MonoBehaviour
     public LayerMask targetLayer;
     public FireRangeHandler fireRangeHandler;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public GameObject FindClosestTarget(Vector3 currentPosition)
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, fireRangeHandler.FireRange, targetLayer);
@@ -30,10 +24,13 @@ public class TargetFinder : MonoBehaviour
                 {
                     closestDistance = distance; // cap nhat k/cach ngan nhat
                     closestTarget = hit.gameObject;  // cap nhat d/tuong gan nhat
+                    Debug.Log($"Closest Target: {closestTarget}");
                 }
             }
             
-            return closestTarget; // tra ve muc tieu gan nhat tim duoc
+            return closestTarget;
+
+            // tra ve muc tieu gan nhat tim duoc
         }
 
         

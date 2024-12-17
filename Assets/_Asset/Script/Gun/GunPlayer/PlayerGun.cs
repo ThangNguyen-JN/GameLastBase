@@ -32,7 +32,6 @@ public class PlayerGun : GunBase
         }
 
     }
-
    
     public override void Shoot()
     {
@@ -40,10 +39,11 @@ public class PlayerGun : GunBase
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-            Vector3 direction = (currentTarget.transform.position - firePoint.position).normalized;
-            bulletScript.Initialize(direction); // khoi tao bullet voi huong di toi muc tieu
-
-            DealDamage(currentTarget);
+            if (bulletScript != null)
+            {
+                Vector3 direction = (currentTarget.transform.position - firePoint.position).normalized;
+                bulletScript.Initialize(direction, damageHandler.Damage); // khoi tao bullet voi huong di toi muc tieu
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireRateHandler : MonoBehaviour
 {
     [SerializeField]private float fireRate;
-    [SerializeField]private float lastFireTime;
+    private float lastFireTime;
 
     public float FireRate
     {
