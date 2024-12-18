@@ -5,7 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public float lifeTime = 1f;
+    public float lifeTime = 3f;
+    public GameObject bullet;
 
     private Vector3 direction;
 
@@ -13,7 +14,8 @@ public class Bullet : MonoBehaviour
 
     public void Start()
     {
-        Destroy(gameObject, lifeTime);
+        
+        Destroy(bullet, lifeTime);
     }
 
     public void Initialize (Vector3 direction)
@@ -24,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     public void Initialize (Vector3 shootDirection, int bulletDamage)
     {
-        direction = new Vector3(shootDirection.x, 0, shootDirection.z).normalized;
+        direction = shootDirection.normalized;
 
         //Gan DamageHandler vao dan neu chua co
         if (damageHandler == null)
@@ -41,12 +43,25 @@ public class Bullet : MonoBehaviour
     {
        transform.Translate(direction * speed * Time.deltaTime);
     }
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        Debug.Log("Bullet Hit " + other.gameObject.name);
+        if (other.CompareTag("Enemy"))
         {
             damageHandler.DealDamage(other.gameObject);
-            Destroy(gameObject);
-        }    
-    }    
+            Destroy(bullet);
+            Debug.Log("Bullet Hit Enemy");
+        }
+    }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        damageHandler.DealDamage(collision.gameObject);
+    //        Destroy(bullet);
+    //        Debug.Log("Bullet Hit Enemy");
+    //    }
+    //}
 }

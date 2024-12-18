@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageHandler : MonoBehaviour
 {
-    private int damage;
+    [SerializeField]private int damage;
     
 
     public int Damage
@@ -15,10 +15,10 @@ public class DamageHandler : MonoBehaviour
 
     public void DealDamage(GameObject target)
     {
-        var healthEnemy = target.GetComponent<HealthEnemy>();
-        if (healthEnemy != null) 
+        var enemyManager = target.GetComponent<EnemyManager>();
+        if (enemyManager != null) 
         { 
-            healthEnemy.TakeDamage(damage);
+            enemyManager.TakeDamage(damage);
         }
         
     }       

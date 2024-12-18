@@ -9,7 +9,7 @@ public class HealthEnemy : MonoBehaviour
     public int EnemyHealth
     {
         get { return enemyHealth; }
-        set { enemyHealth = Mathf.Clamp(value, 0, 100); }
+        set { enemyHealth = Mathf.Clamp(value, 0, 200); }
     }
     // Start is called before the first frame update
     void Start()
