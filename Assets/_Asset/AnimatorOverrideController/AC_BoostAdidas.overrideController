@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AC_BoostAdidas
+  m_Controller: {fileID: 9100000, guid: bb65143c790ec7244bd0041e749ed22f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9f6af09db9bc4694081530361a1ca8ee, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bb866a26ecfc84548874d0bc49fd3ca2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 89ee98f55857c5949be689ab2ad694f8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e418c6c2863f29647adf054e93b429bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 796e29bd2791bb447a684c6e69f9d45b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4a73da77841bf384c82579e0300fb559, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d5ccc119a0ca2fa4d9bffdb108bdcb5b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 22e1704fec85ddf468d14ba418923334, type: 2}
