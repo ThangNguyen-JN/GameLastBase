@@ -29,6 +29,14 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         MovementPlayer();
+        if (Input.GetKey(KeyCode.K))
+        {
+            animator.SetBool("attack", true);
+        }
+        else
+        {
+            animator.SetBool("attack", false);
+        }
     }
 
     public void MovementPlayer()
