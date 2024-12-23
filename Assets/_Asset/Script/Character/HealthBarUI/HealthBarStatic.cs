@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class HealthBarStatic : MonoBehaviour
 {
-    [SerializeField] private Image healthBarfill;
-    [SerializeField] private Image delayedFill;
+    public Image delayedFill;
+    public Image healthBarfill;
+    
     public CharacterManager characterManager;
 
     private Coroutine delayedFillCoroutine;

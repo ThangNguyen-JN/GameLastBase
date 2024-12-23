@@ -36,34 +36,27 @@ public class CharacterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaxHealth = 15;
+        
+        
+        LoadMaxHealthData();
         Health = MaxHealth;
+        
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             UpdateMaxHealth(15);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            TakeDamage(3);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Heal(2);
         }
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if (Health <= 0) 
-        { 
+        if (Health <= 0)
+        {
             Die();
         }
     }
@@ -71,6 +64,7 @@ public class CharacterManager : MonoBehaviour
     public void Heal(int heal)
     {
         Health += heal;
+        Debug.Log($"Heal + {heal}");
         
     }
 
@@ -80,6 +74,7 @@ public class CharacterManager : MonoBehaviour
         {
             MaxHealth += health;
             Health = MaxHealth;
+            SaveMaxHealthData();
         }
     }
 
@@ -87,5 +82,23 @@ public class CharacterManager : MonoBehaviour
     public void Die()
     {
 
+    }
+
+    
+    public void SaveMaxHealthData()
+    {
+        PlayerPrefs.SetInt("MaxHealth", MaxHealth);
+        PlayerPrefs.Save();
+    }
+
+    
+    public void LoadMaxHealthData()
+    {
+        MaxHealth = PlayerPrefs.GetInt("MaxHealth", 15);
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveMaxHealthData();
     }
 }

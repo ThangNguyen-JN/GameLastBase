@@ -12,6 +12,7 @@ public class HpText : MonoBehaviour
     {
         characterManager.OnHealthChanged += UpdateHealthText;
         UpdateHealthText(characterManager.Health, characterManager.MaxHealth);
+        Debug.Log($"{characterManager.Health}");
     }
 
     private void UpdateHealthText(int currentHp, int maxHp)
