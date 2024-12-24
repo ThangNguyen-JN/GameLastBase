@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthUpdateSystem : MonoBehaviour
 {
+    
+    public event Action<int> CoinCostChanged;
     public CharacterManager characterManager;
     public CoinManager coinManager;
 
@@ -11,19 +14,30 @@ public class HealthUpdateSystem : MonoBehaviour
     private int coinCostFirst = 15;
     private int coinCost;
 
+    public int CoinCost
+    { 
+        get { return coinCost; }
+        set
+        {
+            coinCost = value;
+            CoinCostChanged?.Invoke(coinCost);
+        }
+    }
+
     private bool isPlayerInZone = false;
     private Coroutine coinUpdateCoroutine;
    
 
     // Update is called once per frame
-    void Start()
+    void Awake()
     {
         LoadCostUPHealth();
+        Debug.Log($"coinCost: {coinCost}");
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("UpdateHealthZone"))
+        if (other.CompareTag("Player"))
         {
             isPlayerInZone = true;
             if (coinUpdateCoroutine == null)
@@ -35,11 +49,14 @@ public class HealthUpdateSystem : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("UpdateHealthZone"))
+        if (other.CompareTag("Player"))
         {
             isPlayerInZone = false;
-            StopCoroutine(coinUpdateCoroutine);
-            coinUpdateCoroutine = null;
+            if (coinUpdateCoroutine != null)
+            {
+                StopCoroutine(coinUpdateCoroutine);
+                coinUpdateCoroutine = null;
+            }
         }
     }
 
@@ -48,12 +65,14 @@ public class HealthUpdateSystem : MonoBehaviour
 
     private IEnumerator ReduceCoinOverTime()
     {
-        while(coinCost >0 && isPlayerInZone == true)
+        yield return new WaitForSeconds(2f);
+
+        while(CoinCost > 0 && isPlayerInZone == true)
         {
             if (coinManager.Coin > 0)
             {
                 coinManager.SpendCoin(1);
-                coinCost -= 1;
+                CoinCost -= 1;
                 SaveCostUPHealth();
 
             }
@@ -62,12 +81,12 @@ public class HealthUpdateSystem : MonoBehaviour
                 Debug.Log("Not enough coin");
                 break;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         
 
-        if (coinCost <= 0)
+        if (CoinCost <= 0)
         {
             
             UpdateHealth();
@@ -80,7 +99,7 @@ public class HealthUpdateSystem : MonoBehaviour
     {
         characterManager.UpdateMaxHealth(healthIncrease);
         coinCostFirst += 5;
-        coinCost = coinCostFirst;
+        CoinCost = coinCostFirst;
         SaveCostUPHealth();
     }
 
