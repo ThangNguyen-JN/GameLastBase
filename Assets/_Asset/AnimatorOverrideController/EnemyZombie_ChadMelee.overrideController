@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EnemyZombie_ChadMelee
+  m_Controller: {fileID: 9100000, guid: 13ed209b445fa8f4bbbcac74c8bf8c59, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2d951960f25d3f14880fba0c94852970, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d2ade5c3be729a46ac72543bc087bec, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3f23305b7c6a4a14691cf294c5964219, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b683a8a3f0ff26941a6d1593f791b6a8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bdcdc52fa1003e9488b6215fd30599f9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d59d2fbe9831948418e06dde6fa5f8e5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 785d073bd76cb33499a78f791f4a1183, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 20f0f4bdbd96a274f952cc13be4cc24c, type: 2}

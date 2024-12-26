@@ -9,6 +9,8 @@ public class HealthUpdateSystem : MonoBehaviour
     public event Action<int> CoinCostChanged;
     public CharacterManager characterManager;
     public CoinManager coinManager;
+    public CoinMinusEffect coinMinusEffect;
+    public Transform playerTransformEffect;
 
     private int healthIncrease = 15;
     private int coinCostFirst = 15;
@@ -32,7 +34,7 @@ public class HealthUpdateSystem : MonoBehaviour
     void Awake()
     {
         LoadCostUPHealth();
-        Debug.Log($"coinCost: {coinCost}");
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -73,6 +75,7 @@ public class HealthUpdateSystem : MonoBehaviour
             {
                 coinManager.SpendCoin(1);
                 CoinCost -= 1;
+                coinMinusEffect.SpawnCoinEffect();
                 SaveCostUPHealth();
 
             }
