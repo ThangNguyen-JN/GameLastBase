@@ -7,7 +7,7 @@ public class HealthUpdateSystem : MonoBehaviour
 {
     
     public event Action<int> CoinCostChanged;
-    public CharacterManager characterManager;
+    public HealthPlayer characterManager;
     public CoinManager coinManager;
     public CoinMinusEffect coinMinusEffect;
     public Transform playerTransformEffect;

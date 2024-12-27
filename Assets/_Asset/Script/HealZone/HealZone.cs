@@ -7,7 +7,7 @@ public class HealZone : MonoBehaviour
     public float healInterval = 2f;
     private Coroutine healCorotine;
 
-    public CharacterManager characterManager;
+    public HealthPlayer characterManager;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {

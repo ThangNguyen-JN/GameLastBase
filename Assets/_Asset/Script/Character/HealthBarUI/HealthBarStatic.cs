@@ -8,19 +8,19 @@ public class HealthBarStatic : MonoBehaviour
     public Image delayedFill;
     public Image healthBarfill;
     
-    public CharacterManager characterManager;
+    public HealthManager healthManager;
 
     private Coroutine delayedFillCoroutine;
 
 
     private void OnEnable()
     {
-        characterManager.OnHealthChanged += UpdateHealthBar;
+        healthManager.OnHealthChanged += UpdateHealthBar;
 
     }
     private void OnDisable()
     {
-        characterManager.OnHealthChanged -= UpdateHealthBar;
+        healthManager.OnHealthChanged -= UpdateHealthBar;
     }
        
 

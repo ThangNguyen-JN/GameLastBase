@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HpText : MonoBehaviour
 {
     [SerializeField] private Text hpText;
-    public CharacterManager characterManager;
+    public HealthPlayer characterManager;
     // Start is called before the first frame update
     void Start()
     {
