@@ -5,24 +5,60 @@ using UnityEngine;
 public class ZombieManager : MonoBehaviour
 {
     public ZombieMovementWithBoxTrigger movementSystem;
-    public ZombieChaseSystem chaseSystem;
-    public DetectEnemySystem detectSystem;
 
+    public ZombieChaseSystem chaseSystem;
+    public DetectEnemySystem chaseDetectSystem;
+    public DetectEnemySystem attackDetectSystem;
+    public ZombieAttackSystem attackSystem;
+
+    private ZombieState currentState = ZombieState.Idle;
     private void Start()
     {
-        detectSystem.onEnemyDetected += HandleEnemyDetected;
-        detectSystem.onEnemyLost += HandleEnemyLost;
+        chaseDetectSystem.onEnemyDetected += HandleChaseDetected;
+        chaseDetectSystem.onEnemyLost += HandleChaseLost;
+
+        attackDetectSystem.onEnemyDetected += HandleAttackDetected;
+        attackDetectSystem.onEnemyLost += HandleAttackLost;
+
+        attackSystem.onDamageDealt += HandleDamageDealt;
     }
 
-    private void HandleEnemyDetected(Transform enemy)
+    private void HandleChaseDetected(Transform enemy)
     {
-        movementSystem.enabled = false; 
-        chaseSystem.StartChasing(enemy); 
+        if (currentState != ZombieState.Attacking)
+        { 
+            movementSystem.enabled = false;
+            chaseSystem.StartChasing(enemy);
+            currentState = ZombieState.Chasing;
+        }
     }
 
-    private void HandleEnemyLost()
+    private void HandleChaseLost()
     {
-        chaseSystem.StopChasing(); 
-        movementSystem.enabled = true; 
+        if (currentState == ZombieState.Chasing)
+        {
+            chaseSystem.StopChasing();
+            movementSystem.enabled = true;
+            currentState = ZombieState.Idle;
+        }
+    }
+
+    private void HandleAttackDetected(Transform enemy)
+    {
+        chaseSystem.StopChasing();
+        attackSystem.StartAttacking(enemy);
+        currentState = ZombieState.Attacking;
+    }
+
+    private void HandleAttackLost()
+    {
+        attackSystem.StopAttacking();
+        currentState = ZombieState.Chasing;
+        chaseSystem.StartChasing(attackSystem.GetCurrentTarget());
+    }
+
+    private void HandleDamageDealt(int damage)
+    {
+        
     }
 }

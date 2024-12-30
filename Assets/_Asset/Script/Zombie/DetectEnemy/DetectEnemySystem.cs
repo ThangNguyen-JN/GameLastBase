@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DetectEnemySystem : MonoBehaviour
 {
+    public enum TriggerType { Chase, Attack}
+    public TriggerType triggerType;
     public event Action<Transform> onEnemyDetected;
     public event Action onEnemyLost;
 
@@ -12,7 +14,15 @@ public class DetectEnemySystem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            onEnemyDetected?.Invoke(other.transform);
+            if (triggerType == TriggerType.Chase) 
+            {
+                onEnemyDetected?.Invoke(other.transform);
+            }
+            else if (triggerType == TriggerType.Attack)
+            {
+                onEnemyDetected?.Invoke(other.transform);
+            }
+            
         }    
     }
 
@@ -20,7 +30,14 @@ public class DetectEnemySystem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            onEnemyLost?.Invoke(); 
+            if (triggerType == TriggerType.Chase)
+            {
+                onEnemyLost?.Invoke();
+            }
+            else if (triggerType == TriggerType.Attack)
+            {
+                onEnemyLost?.Invoke();
+            }
         }
     }
 }
