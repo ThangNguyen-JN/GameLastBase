@@ -41,6 +41,7 @@ public class ZombieAttackSystem : MonoBehaviour
             if (healthPlayer != null)
             {
                 healthPlayer.TakeDamage(damage);
+                Debug.Log("Zombie Dealt Damage");
                 onDamageDealt?.Invoke(damage);
             }
         }
