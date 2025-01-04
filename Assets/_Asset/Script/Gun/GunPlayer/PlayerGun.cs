@@ -4,45 +4,50 @@ using UnityEngine;
 
 public class PlayerGun : GunBase
 {
-    private TargetFinder targetFinder;
-    private GameObject currentTarget;
-
+    public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
+
+    public Animator anim;
+    private GameObject currentTarget;
+
+
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        targetFinder = GetComponent<TargetFinder>();
     }
+
 
     // Update is called once per frame
-    void Update()
-    {
-        if (targetFinder != null) 
-        {
-            currentTarget = targetFinder.FindClosestTarget(transform.position);
 
-            if (currentTarget != null && CanShoot())
-            {
-                Shoot();
-                ResetFireTime();
-            }
-        }
-
-    }
-   
     public override void Shoot()
     {
-       if (currentTarget!= null)
+        if (targetManager != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
-            if (bulletScript != null)
+            currentTarget = targetManager.FindClosestTarget(transform.position);
+            
+            if (currentTarget != null)
             {
-                Vector3 direction = (currentTarget.transform.position - firePoint.position).normalized;
-                bulletScript.Initialize(direction, damageHandler.Damage); // khoi tao bullet voi huong di toi muc tieu
+                Debug.Log("Shooting at target");
+                Vector3 fireDirection = firePoint.forward; 
+                fireDirection.y = 0; 
+                fireDirection.Normalize();
+
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+                Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+                if (bulletScript != null)
+                {
+                    
+                    //Vector3 direction = transform.forward; 
+                    //direction.y = 0;
+                    //direction.Normalize();
+
+                    bulletScript.Initialize(fireDirection, damageHandler.Damage);
+                    Debug.Log("Bullet fired");
+                }
             }
         }
     }

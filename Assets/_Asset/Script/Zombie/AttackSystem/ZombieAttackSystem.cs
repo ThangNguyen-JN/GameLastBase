@@ -7,6 +7,7 @@ public class ZombieAttackSystem : MonoBehaviour
 {
     public Animator anim;
     [SerializeField]public int damage;
+    
 
     private Transform target;
     private bool isAttacking;
@@ -22,7 +23,7 @@ public class ZombieAttackSystem : MonoBehaviour
     {
         target = player;
         isAttacking = true;
-        anim.SetBool("isMoving", false);
+        //anim.SetBool("isMoving", false);
         anim.SetBool("isAttacking", true);
     }
 
@@ -32,10 +33,10 @@ public class ZombieAttackSystem : MonoBehaviour
         isAttacking = false;
         anim.SetBool("isAttacking", false);
     }
-    
+
     public void DealDamage()
     {
-        if(target != null)
+        if(target != null && isAttacking == true)
         {
             var healthPlayer = target.GetComponent <HealthPlayer>();
             if (healthPlayer != null)
@@ -46,7 +47,6 @@ public class ZombieAttackSystem : MonoBehaviour
             }
         }
     }
-
     public Transform GetCurrentTarget()
     {
         return target;

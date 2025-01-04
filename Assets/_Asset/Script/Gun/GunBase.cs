@@ -6,7 +6,6 @@ public abstract class GunBase : MonoBehaviour
 {
     [SerializeField] protected DamageHandler damageHandler;
     [SerializeField] protected FireRateHandler fireRateHandler;
-    [SerializeField] protected FireRangeHandler fireRangeHandler;
 
     public LayerMask targetLayer;
     // Start is called before the first frame update
@@ -15,24 +14,25 @@ public abstract class GunBase : MonoBehaviour
     {
 
     }    
-    protected bool CanShoot()
+    public bool CanShoot()
     {
-        return fireRateHandler.CanShoot();
+        return fireRateHandler != null && fireRateHandler.CanShoot();
     }
 
-    protected void ResetFireTime()
+    public void ResetFireTime()
     {
-        fireRateHandler.ResetFireTime();
-    }
-
-    protected bool IsTargetInRange (Transform target)
-    {
-        return fireRangeHandler.IsTargetInRange(target);
-    }
+        if (fireRateHandler != null)
+        {
+            fireRateHandler.ResetFireTime();
+        }
+    }  
 
     protected void DealDamage(GameObject target)
     {
-        damageHandler.DealDamage(target);
+        if (damageHandler != null && target != null)
+        {
+            damageHandler.DealDamage(target);
+        }
     }
 
     public abstract void Shoot();

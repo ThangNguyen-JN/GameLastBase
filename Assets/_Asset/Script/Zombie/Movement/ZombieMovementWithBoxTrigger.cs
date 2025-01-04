@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class ZombieMovementWithBoxTrigger : MonoBehaviour
 {
+    public HealthZombie healthZombie;
     public event Action<bool> onWaitingStateChanged;
     public BoxCollider moveArea;
     public float waitTime = 2f;
@@ -13,6 +14,7 @@ public class ZombieMovementWithBoxTrigger : MonoBehaviour
     private NavMeshAgent agent;
     private bool isWaiting;
 
+    public bool isChasing = true;
     public bool IsWaiting
     {
         get { return isWaiting; }
@@ -24,18 +26,27 @@ public class ZombieMovementWithBoxTrigger : MonoBehaviour
                 onWaitingStateChanged?.Invoke(isWaiting);
             }
         }
-    }    
+    }
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         IsWaiting = false;
+        isChasing = true;
         MoveToRandomPosition();
+
+        healthZombie.onDead += StopOnDie;
+        StopOnDie(healthZombie.isDead);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !isWaiting )
+        if (!isChasing)
+        {
+            agent.isStopped = true;
+            return;
+        }
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !isWaiting)
         {
             StartCoroutine(WaitAndMove());
         }
@@ -43,6 +54,7 @@ public class ZombieMovementWithBoxTrigger : MonoBehaviour
 
     private void MoveToRandomPosition()
     {
+
         Vector3 randomPoint = GetRandomPoinBox();
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, Mathf.Max(moveArea.size.x, moveArea.size.y), NavMesh.AllAreas))
@@ -59,7 +71,7 @@ public class ZombieMovementWithBoxTrigger : MonoBehaviour
         float randomX = UnityEngine.Random.Range(-areaSize.x / 2, areaSize.x / 2);
         float randomZ = UnityEngine.Random.Range(-areaSize.z / 2, areaSize.z / 2);
 
-        Vector3 randomPoint = new Vector3(randomX,0, randomZ) + areaCenter;
+        Vector3 randomPoint = new Vector3(randomX, 0, randomZ) + areaCenter;
 
         return randomPoint;
 
@@ -67,9 +79,35 @@ public class ZombieMovementWithBoxTrigger : MonoBehaviour
 
     private IEnumerator WaitAndMove()
     {
+        if (!isChasing) yield break;
+
         IsWaiting = true;
         yield return new WaitForSeconds(waitTime);
-        MoveToRandomPosition();
+        if (isChasing == true)
+        {
+            MoveToRandomPosition();
+        }
         IsWaiting = false;
+
+
+
+    }
+
+    private void StopOnDie(bool isDead)
+    {
+        if (isDead == true)
+        {
+            isChasing = false;
+            agent.isStopped = true;
+            Debug.Log($"Agent Stop {agent.isStopped}");
+            agent.ResetPath();
+            StopAllCoroutines();
+        }
+        
+    }
+
+    private void OnDestroy()
+    {
+        healthZombie.onDead -= StopOnDie;
     }
 }

@@ -10,10 +10,10 @@ public class HealthUpdateSystem : MonoBehaviour
     public HealthPlayer characterManager;
     public CoinManager coinManager;
     public CoinMinusEffect coinMinusEffect;
-    public Transform playerTransformEffect;
+    //public Transform playerTransformEffect;
 
     private int healthIncrease = 15;
-    private int coinCostFirst = 15;
+    private int coinCostUpdate = 15;
     private int coinCost;
 
     public int CoinCost
@@ -34,7 +34,7 @@ public class HealthUpdateSystem : MonoBehaviour
     void Awake()
     {
         LoadCostUPHealth();
-        
+        LoadCostUpdateHealth();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -62,9 +62,6 @@ public class HealthUpdateSystem : MonoBehaviour
         }
     }
 
-
-    
-
     private IEnumerator ReduceCoinOverTime()
     {
         yield return new WaitForSeconds(2f);
@@ -87,23 +84,22 @@ public class HealthUpdateSystem : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        
-
         if (CoinCost <= 0)
         {
             
             UpdateHealth();
             
         }
-        
     }
 
     public void UpdateHealth()
     {
         characterManager.UpdateMaxHealth(healthIncrease);
-        coinCostFirst += 5;
-        CoinCost = coinCostFirst;
+        coinCostUpdate += 5;
+        SaveCostUpdateHealth();
+        CoinCost = coinCostUpdate;
         SaveCostUPHealth();
+        
     }
 
     public void SaveCostUPHealth()
@@ -117,11 +113,24 @@ public class HealthUpdateSystem : MonoBehaviour
         coinCost = PlayerPrefs.GetInt("CostUPHealth", 15);
     }
 
+
+    // Luu gia tien nang cap
+    public void SaveCostUpdateHealth()
+    {
+        PlayerPrefs.SetInt("CostUpdateHealth", coinCostUpdate);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadCostUpdateHealth()
+    {
+        coinCostUpdate = PlayerPrefs.GetInt("CostUpdateHealth", 15);
+    }
+
     public void OnApplicationQuit()
     {
         SaveCostUPHealth();
+        SaveCostUpdateHealth();
     }
-
 
 
 }

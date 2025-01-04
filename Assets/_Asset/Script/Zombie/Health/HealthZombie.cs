@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class HealthZombie : HealthManager
 {
+    public event Action<bool> onDead;
+    public GameObject zombie;
+
+    public bool isDead = false;
     private void Start()
     {
         Health = MaxHealth;
@@ -21,6 +25,9 @@ public class HealthZombie : HealthManager
 
     public override void Die()
     {
-
+        isDead = true;
+        onDead?.Invoke(isDead);
+        Destroy(gameObject);
+        Destroy(zombie, 4f);
     }
 }

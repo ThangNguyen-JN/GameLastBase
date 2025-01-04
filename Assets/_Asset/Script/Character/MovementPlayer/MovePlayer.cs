@@ -13,7 +13,9 @@ public class MovePlayer : MonoBehaviour
     public bool isJoystick;
 
     public Animator animator;
-   
+
+    private Vector3 lastMovementDirection = Vector3.zero;
+
 
     private void Start()
     {
@@ -29,14 +31,7 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         MovementPlayer();
-        if (Input.GetKey(KeyCode.K))
-        {
-            animator.SetBool("attack", true);
-        }
-        else
-        {
-            animator.SetBool("attack", false);
-        }
+        
     }
 
     public void MovementPlayer()
@@ -44,21 +39,39 @@ public class MovePlayer : MonoBehaviour
         if(isJoystick)
         {
             Vector3 movementDirection = new Vector3(joystick.Direction.x, 0.0f, joystick.Direction.y);
-            controller.SimpleMove(movementDirection * movementSpeed);
 
-            if (movementDirection.sqrMagnitude <=0)
+            if (movementDirection.sqrMagnitude > 0.01f)
             {
-                animator.SetBool("isRunning", false);
-                return;
+                lastMovementDirection = movementDirection.normalized;
+                animator.SetBool("isRunning", true);
+
+                RotateTowardsMovementDirection(movementDirection);
+                controller.SimpleMove(lastMovementDirection * movementSpeed);
 
             }
+            else
+            {
+                animator.SetBool("isRunning", false);
+                lastMovementDirection = Vector3.zero;
+                controller.SimpleMove(Vector3.zero);
+            }
 
-            animator.SetBool("isRunning", true);
-
-            var targetDirection = Vector3.RotateTowards(controller.transform.forward, movementDirection, rotationSpeed * Time.deltaTime, 0.0f);
-
-            controller.transform.rotation = Quaternion.LookRotation(targetDirection);
+            
         }
 
+    }
+
+    private void RotateTowardsMovementDirection(Vector3 movementDirection)
+    {
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public bool IsMoving()
+    {
+        return joystick.Direction.sqrMagnitude > 0.01f;
     }
 }

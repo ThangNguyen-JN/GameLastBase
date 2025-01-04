@@ -10,17 +10,47 @@ public class DamageHandler : MonoBehaviour
     public int Damage
     {
         get { return damage; }
-        set { damage = Mathf.Clamp(value, 1, 150);}
+        set { damage = Mathf.Clamp(value, 2, 150);}
     }
+
+    private void Start()
+    {
+        LoadDamage();
+    }
+
 
     public void DealDamage(GameObject target)
     {
-        var enemyManager = target.GetComponent<EnemyManager>();
-        if (enemyManager != null) 
-        { 
-            enemyManager.TakeDamage(damage);
+        if (target == null) return;
+        
+        var healthZombie = target.GetComponent<HealthZombie>();
+        if (healthZombie != null) 
+        {
+            healthZombie.TakeDamage(Damage);
+            
         }
         
-    }       
+    }     
+    
+    public void UpdateDamageGun(int value)
+    {
+        Damage += value;
+    }
+
+    public void SaveDamage()
+    {
+        PlayerPrefs.SetInt("DamageGun", damage);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadDamage()
+    {
+        damage = PlayerPrefs.GetInt("DamageGun", 2);
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveDamage();
+    }
 }
 

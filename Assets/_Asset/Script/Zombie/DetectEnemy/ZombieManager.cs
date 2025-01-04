@@ -27,7 +27,7 @@ public class ZombieManager : MonoBehaviour
     {
         if (currentState != ZombieState.Attacking)
         { 
-            movementSystem.enabled = false;
+            movementSystem.isChasing = true;
             chaseSystem.StartChasing(enemy);
             currentState = ZombieState.Chasing;
         }
@@ -38,7 +38,7 @@ public class ZombieManager : MonoBehaviour
         if (currentState == ZombieState.Chasing)
         {
             chaseSystem.StopChasing();
-            movementSystem.enabled = true;
+            movementSystem.isChasing = true;
             currentState = ZombieState.Idle;
         }
     }
@@ -46,6 +46,7 @@ public class ZombieManager : MonoBehaviour
     private void HandleAttackDetected(Transform enemy)
     {
         chaseSystem.StopChasing();
+        movementSystem.isChasing = false;
         attackSystem.StartAttacking(enemy);
         currentState = ZombieState.Attacking;
     }
@@ -54,11 +55,19 @@ public class ZombieManager : MonoBehaviour
     {
         attackSystem.StopAttacking();
         currentState = ZombieState.Chasing;
-        chaseSystem.StartChasing(attackSystem.GetCurrentTarget());
+        if (chaseDetectSystem.GetCurrentTarget() != null)
+        {
+            chaseSystem.StartChasing(chaseDetectSystem.GetCurrentTarget());
+            movementSystem.isChasing = true;
+            
+        }
+        
     }
 
     private void HandleDamageDealt(int damage)
     {
         
     }
+
+    
 }

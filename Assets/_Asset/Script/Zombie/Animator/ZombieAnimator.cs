@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZombieAnimator : MonoBehaviour
 {
     public ZombieMovementWithBoxTrigger zombieMovement;
+    public HealthZombie healthZombie;
     public Animator anim;
 
     private void Start()
@@ -12,6 +13,10 @@ public class ZombieAnimator : MonoBehaviour
         anim = GetComponent<Animator>();
         zombieMovement.onWaitingStateChanged += UpdateAnimation;
         UpdateAnimation(zombieMovement.IsWaiting);
+
+        healthZombie.onDead += UpdateAnimDie;
+        UpdateAnimDie(healthZombie.isDead);
+
     }
 
     public void UpdateAnimation(bool isWaiting)
@@ -27,9 +32,18 @@ public class ZombieAnimator : MonoBehaviour
         }
     }
 
+    public void UpdateAnimDie(bool isDead)
+    {
+        if (isDead == true)
+        {
+            anim.SetBool("isDead", true);
+        }
+    }
+
     private void OnDestroy()
     {
         zombieMovement.onWaitingStateChanged -= UpdateAnimation;
+        healthZombie.onDead -= UpdateAnimDie;
     }
 
 }

@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 3f;
-    public GameObject bullet;
 
     private Vector3 direction;
 
@@ -15,7 +14,7 @@ public class Bullet : MonoBehaviour
     public void Start()
     {
         
-        Destroy(bullet, lifeTime);
+        Destroy(gameObject, lifeTime);
     }
 
     public void Initialize (Vector3 direction)
@@ -46,22 +45,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet Hit " + other.gameObject.name);
+       
         if (other.CompareTag("Enemy"))
         {
             damageHandler.DealDamage(other.gameObject);
-            Destroy(bullet);
-            Debug.Log("Bullet Hit Enemy");
+            Destroy(gameObject);
+            
         }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        damageHandler.DealDamage(collision.gameObject);
-    //        Destroy(bullet);
-    //        Debug.Log("Bullet Hit Enemy");
-    //    }
-    //}
 }

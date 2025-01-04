@@ -9,11 +9,18 @@ public class DetectEnemySystem : MonoBehaviour
     public TriggerType triggerType;
     public event Action<Transform> onEnemyDetected;
     public event Action onEnemyLost;
+    private Transform currentTarget;
+
+    public Transform GetCurrentTarget()
+    {
+        return currentTarget;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            currentTarget = other.transform;
             if (triggerType == TriggerType.Chase) 
             {
                 onEnemyDetected?.Invoke(other.transform);
@@ -30,6 +37,7 @@ public class DetectEnemySystem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            currentTarget = null;
             if (triggerType == TriggerType.Chase)
             {
                 onEnemyLost?.Invoke();
