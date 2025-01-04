@@ -21,10 +21,6 @@ public class TurretAutoRotate : MonoBehaviour
 
         yield return new WaitForSeconds(targetAngle);
 
-        while (currentAngle <= targetAngle)
-        {
-
-        }
     }
 
 
