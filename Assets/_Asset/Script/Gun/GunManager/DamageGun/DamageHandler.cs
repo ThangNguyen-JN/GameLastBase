@@ -35,6 +35,7 @@ public class DamageHandler : MonoBehaviour
     public void UpdateDamageGun(int value)
     {
         Damage += value;
+        SaveDamage();
     }
 
     public void SaveDamage()

@@ -86,12 +86,12 @@ public class DamageUpdateSystem : MonoBehaviour
         if (CurrentCostUpDamage <= 0)
         {
 
-            UpdateHealth();
+            UpdateDamage();
 
         }
     }
 
-    public void UpdateHealth()
+    public void UpdateDamage()
     {
         damageHandler.UpdateDamageGun(damageIncrease);
         damageCostUpdate += 10;
