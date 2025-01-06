@@ -10,17 +10,12 @@ public class AttackState : CharacterState
     public override void EnterState()
     {
         stateManager.animator.SetBool("isAttack", true);
-        stateManager.playerGun.enabled = true;
+        stateManager.gunPlayer.enabled = true;
         hasRotated = false;
     }
 
     public override void UpdateState()
     {
-        if (!stateManager.targetManager.HasTargets())
-        {
-            stateManager.SwitchState(stateManager.idleState);
-            return;
-        }
 
         if (stateManager.IsMoving())
         {
@@ -29,11 +24,12 @@ public class AttackState : CharacterState
         }
 
         GameObject closestTarget = stateManager.targetManager.FindClosestTarget(stateManager.transform.position);
-        if (closestTarget != null) 
+
+        if (closestTarget != null)
         {
 
             RotateTowardsTarget(closestTarget.transform);
-            if (!hasRotated && IsRotationComplete(closestTarget.transform))
+            if (!hasRotated && IsRotationComplete(closestTarget.transform) == true)
             {
                 hasRotated = true;
             }
@@ -43,24 +39,32 @@ public class AttackState : CharacterState
                 stateManager.StartCoroutine(WaitAndShoot());
             }
         }
+
+        if (closestTarget == null)
+        {
+            stateManager.targetManager.RemoveNullTargets();
+            stateManager.SwitchState(stateManager.idleState);
+
+        }
+
+        
     }
 
     private IEnumerator WaitAndShoot()
     {
         yield return new WaitForSeconds(0.5f);
 
-        if (stateManager.playerGun.CanShoot())
+        if (stateManager.gunPlayer.CanShoot())
         {
-            stateManager.playerGun.Shoot();
-            stateManager.playerGun.ResetFireTime();
+            stateManager.gunPlayer.Shoot();
+            stateManager.gunPlayer.ResetFireTime();
         }
     }
-
 
     public override void ExitState() 
     {
         stateManager.animator.SetBool("isAttack", false);
-        stateManager.playerGun.enabled = false;
+        stateManager.gunPlayer.enabled = false;
     }
 
     private void RotateTowardsTarget(Transform target)

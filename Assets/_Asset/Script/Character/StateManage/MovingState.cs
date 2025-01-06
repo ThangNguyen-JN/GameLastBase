@@ -9,7 +9,7 @@ public class MovingState : CharacterState
     public override void EnterState()
     {
         Debug.Log("Player is moving");
-        stateManager.playerGun.enabled = false; 
+        stateManager.gunPlayer.enabled = false; 
     }
     public override void UpdateState()
     {

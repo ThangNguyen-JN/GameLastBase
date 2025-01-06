@@ -7,6 +7,7 @@ public class HealthZombie : HealthManager
 {
     public event Action<bool> onDead;
     public GameObject zombie;
+    public DropItem dropItem;
 
     public bool isDead = false;
     private void Start()
@@ -27,7 +28,13 @@ public class HealthZombie : HealthManager
     {
         isDead = true;
         onDead?.Invoke(isDead);
+        if (dropItem != null)
+        {
+            dropItem.DropItems(transform.position);
+        }
         Destroy(gameObject);
         Destroy(zombie, 4f);
     }
+
+   
 }

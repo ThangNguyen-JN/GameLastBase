@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGun : GunBase
+public class TurretGunSystem : GunBase
 {
     public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    public Animator anim;
     private GameObject currentTarget;
-
-
 
     // Start is called before the first frame update
     protected override void Start()
@@ -27,12 +24,12 @@ public class PlayerGun : GunBase
         if (targetManager != null)
         {
             currentTarget = targetManager.FindClosestTarget(transform.position);
-            
+
             if (currentTarget != null)
             {
                 Debug.Log("Shooting at target");
-                Vector3 fireDirection = firePoint.forward; 
-                fireDirection.y = 0; 
+                Vector3 fireDirection = firePoint.forward;
+                fireDirection.y = 0;
                 fireDirection.Normalize();
 
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
@@ -40,11 +37,6 @@ public class PlayerGun : GunBase
 
                 if (bulletScript != null)
                 {
-                    
-                    //Vector3 direction = transform.forward; 
-                    //direction.y = 0;
-                    //direction.Normalize();
-
                     bulletScript.Initialize(fireDirection, damageHandler.Damage);
                     Debug.Log("Bullet fired");
                 }

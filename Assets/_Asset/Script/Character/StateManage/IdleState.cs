@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : CharacterState
+public class IdleTurretState : CharacterState
 {
-    public IdleState(CharacterStateManager manager) : base(manager) { }
+    public IdleTurretState(CharacterStateManager manager) : base(manager) { }
 
     public override void EnterState()
     {
         Debug.Log("Start Shoot");
-        stateManager.playerGun.enabled = true;
+        stateManager.gunPlayer.enabled = true;
     }
     public override void UpdateState()
     {

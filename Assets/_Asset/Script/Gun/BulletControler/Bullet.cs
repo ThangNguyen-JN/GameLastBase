@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     public DamageHandler damageHandler;
 
+
     public void Start()
     {
         
@@ -34,8 +35,6 @@ public class Bullet : MonoBehaviour
         }
         damageHandler.Damage = bulletDamage;
     }    
-    
-
 
     // Update is called once per frame
     void Update()
@@ -46,7 +45,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Zombie"))
         {
             damageHandler.DealDamage(other.gameObject);
             Destroy(gameObject);

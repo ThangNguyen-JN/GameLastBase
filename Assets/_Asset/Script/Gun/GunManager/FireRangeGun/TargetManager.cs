@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
-    private List<GameObject> targetsInRange = new List<GameObject>();
+
+
+    public List<GameObject> targetsInRange = new List<GameObject>();
+
+   
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Zombie"))
         {
             targetsInRange.Add(other.gameObject);
             Debug.Log($"Target Entered {other.gameObject}");
@@ -21,6 +25,11 @@ public class TargetManager : MonoBehaviour
         {
             targetsInRange.Remove(other.gameObject);
         }
+    }
+
+    public void RemoveNullTargets()
+    {
+        targetsInRange.RemoveAll(target => target == null);
     }
 
     public GameObject FindClosestTarget(Vector3 currentPosition)
@@ -42,7 +51,6 @@ public class TargetManager : MonoBehaviour
                 closestTarget = target;
             }
         }
-        
         return closestTarget;
         
     }

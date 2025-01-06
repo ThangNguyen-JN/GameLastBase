@@ -6,14 +6,10 @@ public abstract class GunBase : MonoBehaviour
 {
     [SerializeField] protected DamageHandler damageHandler;
     [SerializeField] protected FireRateHandler fireRateHandler;
-
-    public LayerMask targetLayer;
+    
     // Start is called before the first frame update
 
-    protected virtual void Start()
-    {
-
-    }    
+    protected virtual void Start() { }   
     public bool CanShoot()
     {
         return fireRateHandler != null && fireRateHandler.CanShoot();
@@ -25,7 +21,7 @@ public abstract class GunBase : MonoBehaviour
         {
             fireRateHandler.ResetFireTime();
         }
-    }  
+    }
 
     protected void DealDamage(GameObject target)
     {
@@ -35,5 +31,7 @@ public abstract class GunBase : MonoBehaviour
         }
     }
 
-    public abstract void Shoot();
+    public virtual void Shoot()
+    {
+    }
 }

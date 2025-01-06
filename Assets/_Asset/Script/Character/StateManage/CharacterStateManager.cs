@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterStateManager : MonoBehaviour
 {
-    public IdleState idleState { get; private set; }
+    public IdleTurretState idleState { get; private set; }
     public MovingState movingState { get; private set; }
     public AttackState attackState { get; private set; }
     public CharacterState currentState { get; private set; }
 
     public MovePlayer movePlayer;
-    public PlayerGun playerGun;
+    public GunPlayer gunPlayer;
     public TargetManager targetManager;
     public Animator animator;
 
@@ -24,7 +24,7 @@ public class CharacterStateManager : MonoBehaviour
     private void Start()
     {
         //Khoi tao cac trang thai
-        idleState = new IdleState(this);
+        idleState = new IdleTurretState(this);
         movingState = new MovingState(this);
         attackState = new AttackState(this);
 
@@ -69,8 +69,4 @@ public class CharacterStateManager : MonoBehaviour
         }
     }
 
-    //public void AnimationAttackStart()
-    //{
-    //    playerGun.ShootAnimationEvent();
-    //}
 }
