@@ -8,6 +8,7 @@ TagManager:
   - SafeZone
   - UpdateHealthZone
   - Zombie
+  - ItemSkull
   layers:
   - Default
   - TransparentFX
