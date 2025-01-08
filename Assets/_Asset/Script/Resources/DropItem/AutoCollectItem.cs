@@ -1,26 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AutoCollectItem : MonoBehaviour
 {
-    public GameObject itemPrefab;
-    
-    public float speedMove;
-    public Transform targetPosition;
-    public bool isCollect = false;
+    public Transform player;
+    public float moveDuration = 1f;
+    public float pickupRadius = 5f;
 
-    public void OnTriggerEnter(Collider other)
+    private bool isCollected = false;
+
+
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
         {
-            isCollect = true;
+            player = playerObject.transform;
         }
     }
-
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isCollect == true)
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition.transform.position, speedMove * Time.deltaTime);
+        if (isCollected == false) return;
+        
+        if (other.CompareTag("Player"))
+        {
+            isCollected = true;
+            MoveToPlayer();
+        }    
+    }
+
+    private void MoveToPlayer()
+    {
+        transform.DOMove(player.position, moveDuration).OnComplete(() =>
+        {
+            CollectItem();
+        });
+    }
+
+    private void CollectItem()
+    {
+        Debug.Log("Skull + 1");
+        Destroy(gameObject);
     }
 }

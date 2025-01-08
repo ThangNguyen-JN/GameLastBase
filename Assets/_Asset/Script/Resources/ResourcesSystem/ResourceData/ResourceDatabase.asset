@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0802fcc88f6e9745a271b1f17f18c69, type: 3}
+  m_Name: ResourceDatabase
+  m_EditorClassIdentifier: 
+  resources:
+  - resourceName: ItemSkull
+    icon: {fileID: 21300000, guid: eceebebca2c14a048bca4753aa223e21, type: 2}
+    amount: 15
+    maxAmount: 20
+    unlock: 1
+  - resourceName: ItemWood
+    icon: {fileID: 21300000, guid: 48f5d433f9640fb44b0d43aa7fac55d7, type: 3}
+    amount: 0
+    maxAmount: 20
+    unlock: 1
+  - resourceName: ItemStone
+    icon: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
+  - resourceName: ItemScrap
+    icon: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
+  - resourceName: ItemFuel
+    icon: {fileID: 21300000, guid: 0eace0f0d5b2b374cab1a12c836454d7, type: 3}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
+  - resourceName: ItemDetail
+    icon: {fileID: 21300000, guid: 07f8d3ffbcbd3ba4e95cb5d0e9feb799, type: 3}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
+  - resourceName: ItemRope
+    icon: {fileID: 21300000, guid: 817cbdb9e7c8db24fa1b75be2967d6aa, type: 2}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
+  - resourceName: ItemBattery
+    icon: {fileID: 21300000, guid: 5fb4a01f30ee1e34799d853efadbae53, type: 3}
+    amount: 0
+    maxAmount: 20
+    unlock: 0
