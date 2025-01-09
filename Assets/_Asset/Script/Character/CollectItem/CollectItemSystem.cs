@@ -7,12 +7,11 @@ public class CollectItemSystem : MonoBehaviour
 {
     public float moveDuration = 1f;
     public Transform player;
-    public ResourceDatabase resourceDatabase;
     public ChangeResource changeResource;
 
     public void Start()
     {
-        changeResource = new ChangeResource(resourceDatabase);
+        changeResource = new ChangeResource();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +33,7 @@ public class CollectItemSystem : MonoBehaviour
         moveSequence.AppendInterval(moveDuration).OnComplete(() =>
         {
             changeResource.AddResource(resourceName, 1);
-            resourceDatabase.SaveResource();
+            ResourceDatabase.Instance.SaveResource();
             Destroy(item);
         });
         item.transform.DORotate(new Vector3(0, 360, 0), moveDuration, RotateMode.FastBeyond360);

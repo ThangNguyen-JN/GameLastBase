@@ -7,7 +7,6 @@ public class ResourceUIInitializer : MonoBehaviour
     public GameObject resourceUIPrefab; //prefab chua UI
     public Transform uiParent; //Parent de chua UI
 
-    public ResourceDatabase resourceDatabase;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +15,7 @@ public class ResourceUIInitializer : MonoBehaviour
 
     private void InitializeResouceUI()
     {
+        ResourceDatabase resourceDatabase = ResourceDatabase.Instance;
         //lap qua cac tai nguyen trong ResourceDatabase
         foreach (Resource resource in resourceDatabase.resources)
         {
@@ -31,7 +31,6 @@ public class ResourceUIInitializer : MonoBehaviour
                 {
                     //thiet lap cac thong tin
                     uiManager.resourceName = resource.resourceName; // ten tai nguyen
-                    uiManager.resourceDatabase = resourceDatabase; // co so du lieu tai nguyen
                     //khoi tao giao dien tai nguyen
                     uiManager.InitializeUI();
                 }

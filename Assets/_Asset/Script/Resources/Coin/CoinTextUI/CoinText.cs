@@ -6,22 +6,24 @@ using UnityEngine.UI;
 public class CoinText : MonoBehaviour
 {
     [SerializeField]private Text textCoin;
-    public CoinManager coinManager;
 
     void Start()
     {
-        coinManager.CoinChangeUpdate += UpdateCoin;
-        UpdateCoin(coinManager.Coin);
+        if (CoinManager.Instance != null)
+        {
+            CoinManager.Instance.CoinChangeUpdate += UpdateCoin;
+            UpdateCoin(CoinManager.Instance.Coin);
+        }
     }
 
     public void UpdateCoin(int coinAmount)
     {
-        textCoin.text = coinManager.Coin.ToString();
+        textCoin.text = coinAmount.ToString();
     }
 
     private void OnDestroy()
     {
-        coinManager.CoinChangeUpdate -= UpdateCoin;
+        CoinManager.Instance.CoinChangeUpdate -= UpdateCoin;
     }
 
 

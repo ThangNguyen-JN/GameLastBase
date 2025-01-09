@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
+    private static CoinManager instance;
+    public static CoinManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<CoinManager>();
+                if (instance == null)
+                {
+                    GameObject coinManagerObject = new GameObject("CoinManager");
+                    instance = coinManagerObject.AddComponent<CoinManager>();
+                }
+            }
+            return instance;
+        }
+    }
     public event Action<int> CoinChangeUpdate;
     private int currentCoin;
 
@@ -22,13 +39,6 @@ public class CoinManager : MonoBehaviour
     {
         LoadCoin();
     }
-
-    private void Update()
-    {
-       
-    }
-
-    
 
     public void AddCoin(int amount)
     {

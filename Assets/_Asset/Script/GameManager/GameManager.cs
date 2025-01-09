@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public ResourceDatabase resourceDatabase;
 
     private void Start()
     {
-        resourceDatabase.LoadResource();
+        ResourceDatabase.Instance.LoadResource();
     }
 
     private void OnApplicationQuit()
     {
-        resourceDatabase.SaveResource();
+        ResourceDatabase.Instance.SaveResource();
     }
 }

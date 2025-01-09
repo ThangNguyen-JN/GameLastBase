@@ -8,6 +8,24 @@ using System.IO;
 [CreateAssetMenu(fileName = "ResourceDatabase", menuName = "Resources/ResourceDatabase")]
 public class ResourceDatabase : ScriptableObject
 {
+    //Signleton Instance
+    private static ResourceDatabase instance;
+    public static ResourceDatabase Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = Resources.Load<ResourceDatabase>("ResourcesSystem/ResourceData/ResourceDatabase");
+                if (instance == null)
+                {
+                    Debug.Log("ResourceDatabase Erro");
+                }
+            }
+            return instance;
+        }
+    }    
+
     //Danh sach cac tai nguyen trong co so du lieu
     public List<Resource> resources = new List<Resource>();
 

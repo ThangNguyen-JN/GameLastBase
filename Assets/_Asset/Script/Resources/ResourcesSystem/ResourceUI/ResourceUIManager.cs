@@ -11,24 +11,24 @@ public class ResourceUIManager : MonoBehaviour
     public Image iconUI;
     public Text amountTextUI;
     
-    public ResourceDatabase resourceDatabase;
+    //public ResourceDatabase resourceDatabase;
 
     private void Start()
     {
         InitializeUI(); // khoi tao UI
-        resourceDatabase.OnResourceChanged += UpdateUI; //Dang ky su kien
+        ResourceDatabase.Instance.OnResourceChanged += UpdateUI; //Dang ky su kien
     }
 
     private void OnDestroy()
     {
-        resourceDatabase.OnResourceChanged -= UpdateUI; //Huy su kien
+        ResourceDatabase.Instance.OnResourceChanged -= UpdateUI; //Huy su kien
     }
 
     //thuc hien khoi tao UI
     public void InitializeUI()
     {
         //lay tai nguyen tu resourceDatabase dua theo ten
-        Resource resource = resourceDatabase.GetResource(resourceName);
+        Resource resource = ResourceDatabase.Instance.GetResource(resourceName);
         if (resource != null) //tim thay tai nguyen va cap nhat
         {
             if (iconUI != null)

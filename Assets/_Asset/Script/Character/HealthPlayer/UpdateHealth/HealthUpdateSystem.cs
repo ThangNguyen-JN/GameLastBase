@@ -8,7 +8,7 @@ public class HealthUpdateSystem : MonoBehaviour
     
     public event Action<int> CoinCostChanged;
     public HealthPlayer characterManager;
-    public CoinManager coinManager;
+    //public CoinManager coinManager;
     public CoinMinusEffect coinMinusEffect;
     //public Transform playerTransformEffect;
 
@@ -68,9 +68,9 @@ public class HealthUpdateSystem : MonoBehaviour
 
         while(CoinCost > 0 && isPlayerInZone == true)
         {
-            if (coinManager.Coin > 0)
+            if (CoinManager.Instance.Coin > 0)
             {
-                coinManager.SpendCoin(1);
+                CoinManager.Instance.SpendCoin(1);
                 CoinCost -= 1;
                 coinMinusEffect.SpawnCoinEffect();
                 SaveCostUPHealth();
