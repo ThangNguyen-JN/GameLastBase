@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class CoinManager : MonoBehaviour
                 {
                     GameObject coinManagerObject = new GameObject("CoinManager");
                     instance = coinManagerObject.AddComponent<CoinManager>();
+                    DontDestroyOnLoad(coinManagerObject);
+
                 }
             }
             return instance;
@@ -33,6 +36,18 @@ public class CoinManager : MonoBehaviour
             currentCoin = Mathf.Clamp(value, 0, 999);
             CoinChangeUpdate?.Invoke(currentCoin);
         }
+    }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

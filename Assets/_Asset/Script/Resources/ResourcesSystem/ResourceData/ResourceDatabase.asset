@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources:
   - resourceName: ItemSkull
-    icon: {fileID: 21300000, guid: eceebebca2c14a048bca4753aa223e21, type: 2}
-    amount: 15
+    icon: {fileID: 21300000, guid: d77ade9754e5af4429e7d6b928eaba13, type: 3}
+    amount: 1
     maxAmount: 20
     unlock: 1
   - resourceName: ItemWood
@@ -29,7 +29,7 @@ MonoBehaviour:
     maxAmount: 20
     unlock: 0
   - resourceName: ItemScrap
-    icon: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
+    icon: {fileID: 21300000, guid: b16d83511c8eb3b48bd90097498746d5, type: 3}
     amount: 0
     maxAmount: 20
     unlock: 0
@@ -39,17 +39,17 @@ MonoBehaviour:
     maxAmount: 20
     unlock: 0
   - resourceName: ItemDetail
-    icon: {fileID: 21300000, guid: 07f8d3ffbcbd3ba4e95cb5d0e9feb799, type: 3}
+    icon: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
     amount: 0
     maxAmount: 20
     unlock: 0
   - resourceName: ItemRope
-    icon: {fileID: 21300000, guid: 817cbdb9e7c8db24fa1b75be2967d6aa, type: 2}
+    icon: {fileID: 21300000, guid: 79417262870061443ad5542ccdb3a05e, type: 3}
     amount: 0
     maxAmount: 20
     unlock: 0
   - resourceName: ItemBattery
-    icon: {fileID: 21300000, guid: 5fb4a01f30ee1e34799d853efadbae53, type: 3}
+    icon: {fileID: 21300000, guid: 4fb6c746908350046943b038f88d3109, type: 2}
     amount: 0
     maxAmount: 20
     unlock: 0
