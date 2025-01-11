@@ -7,7 +7,7 @@ using System;
 public class Resource
 {
     public string resourceName;
-    public Sprite icon;
+    public Sprite iconPath;
     public int amount;
     public int maxAmount;
     public bool unlock = false;

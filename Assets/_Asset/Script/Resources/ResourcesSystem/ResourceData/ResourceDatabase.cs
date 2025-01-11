@@ -70,6 +70,7 @@ public class ResourceDatabase : ScriptableObject
         OnResourceChanged?.Invoke(resource); //kich hoat su kien voi tai nguyen cu the
     }
 
+    [ContextMenu("Save Resource")]
     public void SaveResource()
     {
         ResourceSaveData saveData = new ResourceSaveData();

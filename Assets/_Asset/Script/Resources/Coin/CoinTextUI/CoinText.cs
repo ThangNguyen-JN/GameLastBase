@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class CoinText : MonoBehaviour
 {
     [SerializeField]private Text textCoin;
+    public CoinManager coinManager;
 
     void Start()
     {
-        if (CoinManager.Instance != null)
+        if (coinManager != null)
         {
-            CoinManager.Instance.CoinChangeUpdate += UpdateCoin;
-            UpdateCoin(CoinManager.Instance.Coin);
+            coinManager.CoinChangeUpdate += UpdateCoin;
+            UpdateCoin(coinManager.Coin);
         }
     }
 
@@ -23,7 +24,7 @@ public class CoinText : MonoBehaviour
 
     private void OnDestroy()
     {
-        CoinManager.Instance.CoinChangeUpdate -= UpdateCoin;
+        coinManager.CoinChangeUpdate -= UpdateCoin;
     }
 
 

@@ -11,7 +11,7 @@ public class ResourceUIManager : MonoBehaviour
     public Image iconUI;
     public Text amountTextUI;
     
-    //public ResourceDatabase resourceDatabase;
+    public ResourceDatabase resourceDatabase;
 
     private void Start()
     {
@@ -32,8 +32,9 @@ public class ResourceUIManager : MonoBehaviour
         if (resource != null) //tim thay tai nguyen va cap nhat
         {
             if (iconUI != null)
-                iconUI.sprite = resource.icon;
-
+            {
+                iconUI.sprite = resource.iconPath;
+            }
             UpdateAmountText(resource);
         }
     }

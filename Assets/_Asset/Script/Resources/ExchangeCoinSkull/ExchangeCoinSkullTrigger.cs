@@ -10,12 +10,12 @@ public class ExchangeCoinSkullTrigger : MonoBehaviour
    
 
     private ResourceDatabase resourceDatabase;
-    private CoinManager coinManager;
+    public CoinManager coinManager;
 
     private void Start()
     {
         resourceDatabase = ResourceDatabase.Instance;
-        coinManager = CoinManager.Instance;
+        
     }
 
     public void OnTriggerEnter(Collider other)

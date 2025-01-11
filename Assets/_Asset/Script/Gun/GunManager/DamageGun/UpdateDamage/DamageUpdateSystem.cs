@@ -7,7 +7,7 @@ public class DamageUpdateSystem : MonoBehaviour
 {
     public event Action<int> CoinCostChangedUpDamage;
     public DamageHandler damageHandler;
-    //public CoinManager coinManager;
+    public CoinManager coinManager;
     public CoinMinusEffect coinMinusEffect;
     //public Transform playerTransformEffect;
 
@@ -67,9 +67,9 @@ public class DamageUpdateSystem : MonoBehaviour
 
         while (CurrentCostUpDamage > 0 && isPlayerInZone == true)
         {
-            if (CoinManager.Instance.Coin > 0)
+            if (coinManager.Coin > 0)
             {
-                CoinManager.Instance.SpendCoin(1);
+                coinManager.SpendCoin(1);
                 CurrentCostUpDamage -= 1;
                 coinMinusEffect.SpawnCoinEffect();
                 SaveCurrentCostUpDamage();
