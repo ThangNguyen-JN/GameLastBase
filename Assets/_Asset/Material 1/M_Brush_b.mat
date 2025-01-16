@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Brush_b
-  m_Shader: {fileID: 4800000, guid: 82c408478ce39d041a23a97b9f6ec62e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 72443e428d633a343bd2e3b622f61c73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,45 +16,45 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties:
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-      _BaseMask:
+    - _BaseMask:
         m_Texture: {fileID: 2800000, guid: 307b77e962a897a45aa41ec053f00e8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-      _WindMask:
+    - _WindMask:
         m_Texture: {fileID: 2800000, guid: eda69ed6f5db46d4f8504ace304009b1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-      unity_Lightmaps:
+    - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-      unity_LightmapsInd:
+    - unity_LightmapsInd:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-      unity_ShadowMasks:
+    - unity_ShadowMasks:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: {}
+    m_Ints: []
     m_Floats:
-      _Emission: 1
-      _QueueControl: 1
-      _QueueOffset: -1
-      _WindTiling: 0.025
-      _Wind_EmissionAdd: 0.05
-      _Wind_Power: 0.8
-      _Wind_Speed: 0.65
-      _Wind_emissionAdd: 0.15
+    - _Emission: 1
+    - _QueueControl: 1
+    - _QueueOffset: -1
+    - _WindTiling: 0.025
+    - _Wind_EmissionAdd: 0.05
+    - _Wind_Power: 0.8
+    - _Wind_Speed: 0.65
+    - _Wind_emissionAdd: 0.15
     m_Colors:
-      _Color_add: {r: 0.20784314, g: 0.6431373, b: 0.4776721, a: 1}
-      _Color_base: {r: 0.0983001, g: 0.4433962, b: 0.3233628, a: 1}
-      _Wind_Direction: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Color_add: {r: 0.20784314, g: 0.6431373, b: 0.4776721, a: 1}
+    - _Color_base: {r: 0.0983001, g: 0.4433962, b: 0.3233628, a: 1}
+    - _Wind_Direction: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []

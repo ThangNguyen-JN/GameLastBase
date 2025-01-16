@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Foliage
-  m_Shader: {fileID: 4800000, guid: 82c408478ce39d041a23a97b9f6ec62e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 72443e428d633a343bd2e3b622f61c73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,6 +24,22 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMask:
+        m_Texture: {fileID: 2800000, guid: 307b77e962a897a45aa41ec053f00e8e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 0c2a6a0b3844aaa40be637b58574e5ee, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CkeckerMask:
+        m_Texture: {fileID: 2800000, guid: 0c2a6a0b3844aaa40be637b58574e5ee, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: 307b77e962a897a45aa41ec053f00e8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -45,21 +61,31 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Emission: 1
+    - _Cull: 2
+    - _Cutoff: 0.333
+    - _Emission: 0.76
+    - _Emmision: 0
     - _NoisePower: 0
     - _NoiseScale: 1
     - _NoiseSpeed: 0
+    - _QEmission: 1
     - _QueueControl: 1
     - _QueueOffset: -1
     - _Size: 0.1
+    - _Tilling: 0.01
+    - _WindQuality: 0
     - _WindTiling: 0.025
     - _Wind_EmissionAdd: 0.1
-    - _Wind_Power: 1
+    - _Wind_Power: 0
     - _Wind_Speed: 0.2
     - _Wind_emissionAdd: 0.15
     m_Colors:
-    - _Color: {r: 1.52, g: 6.01, b: -0.03, a: 0}
-    - _Color_add: {r: 0.55495095, g: 0.8301887, b: 0.3485226, a: 1}
-    - _Color_base: {r: 0.42352945, g: 0.73333335, b: 0.42352945, a: 1}
+    - _Color: {r: 0.27450982, g: 1, b: 0.25882354, a: 0}
+    - _Color_add: {r: 0.22118169, g: 0.4716981, b: 0.028924897, a: 0.5686275}
+    - _Color_alt: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_base: {r: 0.35506406, g: 0.9528302, b: 0.35506406, a: 0.43137255}
+    - _Color_dirt: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_dirt_alt: {r: 0, g: 0, b: 0, a: 0}
+    - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _Wind_Direction: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
