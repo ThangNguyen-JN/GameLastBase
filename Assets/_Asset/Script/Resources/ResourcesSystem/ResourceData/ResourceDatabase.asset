@@ -15,7 +15,7 @@ MonoBehaviour:
   resources:
   - resourceName: ItemSkull
     iconPath: {fileID: 21300000, guid: eceebebca2c14a048bca4753aa223e21, type: 2}
-    amount: 7
+    amount: 9
     maxAmount: 20
     unlock: 1
   - resourceName: ItemWood

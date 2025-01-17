@@ -9,6 +9,7 @@ TagManager:
   - UpdateHealthZone
   - Zombie
   - ItemSkull
+  - ZoneResource
   layers:
   - Default
   - TransparentFX

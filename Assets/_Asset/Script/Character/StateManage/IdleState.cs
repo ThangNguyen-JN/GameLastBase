@@ -13,7 +13,16 @@ public class IdleTurretState : CharacterState
     }
     public override void UpdateState()
     {
-       
+        if (stateManager.moveInZoneResource.IsZoneResource == true)
+        {
+            stateManager.SwitchState(stateManager.exploitState);
+        }
+
+        if (stateManager.IsMoving())
+        {
+            stateManager.SwitchState(stateManager.movingState);
+        }
+
         if (stateManager.targetManager.HasTargets() && !stateManager.movePlayer.IsMoving())
         {
             GameObject closestTarget = stateManager.targetManager.FindClosestTarget(stateManager.transform.position);
@@ -23,12 +32,7 @@ public class IdleTurretState : CharacterState
                 RotateTowardsTarget(closestTarget.transform);
                 stateManager.SwitchState(stateManager.attackState);
             }
-        }
-
-        if (stateManager.IsMoving())
-        {
-            stateManager.SwitchState(stateManager.movingState);
-        }
+        }    
     }
 
     private void RotateTowardsTarget(Transform target)

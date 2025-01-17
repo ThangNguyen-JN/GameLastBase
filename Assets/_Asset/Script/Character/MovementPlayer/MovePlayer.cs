@@ -8,6 +8,7 @@ public class MovePlayer : MonoBehaviour
     public CharacterController controller;
     public float movementSpeed;
     public float rotationSpeed;
+    public MoveInZoneResource moveInZoneResource;
 
     public Canvas inputCanvas;
     public bool isJoystick;
@@ -19,6 +20,7 @@ public class MovePlayer : MonoBehaviour
 
     private void Start()
     {
+        moveInZoneResource.PlayerInZoneResource += PayerMoveZoneResource;
         EnableJoystickInput();
     }
 
@@ -44,6 +46,7 @@ public class MovePlayer : MonoBehaviour
             {
                 lastMovementDirection = movementDirection.normalized;
                 animator.SetBool("isRunning", true);
+                
 
                 RotateTowardsMovementDirection(movementDirection);
                 controller.SimpleMove(lastMovementDirection * movementSpeed);
@@ -73,5 +76,10 @@ public class MovePlayer : MonoBehaviour
     public bool IsMoving()
     {
         return joystick.Direction.sqrMagnitude > 0.01f;
+    }
+
+    public void PayerMoveZoneResource(bool playerInZoneResource)
+    {
+        moveInZoneResource.IsZoneResource = playerInZoneResource;
     }
 }

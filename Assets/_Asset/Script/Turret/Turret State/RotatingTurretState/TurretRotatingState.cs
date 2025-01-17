@@ -14,7 +14,6 @@ public class TurretRotatingState : StateTurret
     {
         randomAngle = Random.Range(0f, 360f);
 
-        Debug.Log($"Random Angle: {randomAngle} ");
         isRotating = true;
     }
     public override void UpdateTurretState()

@@ -7,14 +7,17 @@ public class CharacterStateManager : MonoBehaviour
     public IdleTurretState idleState { get; private set; }
     public MovingState movingState { get; private set; }
     public AttackState attackState { get; private set; }
+    public ExploitState exploitState { get; private set; }
     public CharacterState currentState { get; private set; }
 
     public MovePlayer movePlayer;
+    public MoveInZoneResource moveInZoneResource;
     public GunPlayer gunPlayer;
     public TargetManager targetManager;
     public Animator animator;
 
     public float rotationSpeed = 5f;
+    public bool playerInZoneResource = false;
 
     public new void StartCoroutine(IEnumerator coroutine)
     {
@@ -27,11 +30,14 @@ public class CharacterStateManager : MonoBehaviour
         idleState = new IdleTurretState(this);
         movingState = new MovingState(this);
         attackState = new AttackState(this);
+        exploitState = new ExploitState(this);
 
         //Bat dau o trang thai Idle
         currentState = idleState;
         currentState.EnterState();
 
+        //moveInZoneResource.PlayerInZoneResource += CheckInZoneResource;
+        //CheckInZoneResource(playerInZoneResource);
     }
 
     private void Update()
@@ -51,6 +57,13 @@ public class CharacterStateManager : MonoBehaviour
     {
         return movePlayer.joystick.Direction.sqrMagnitude > 0;
     }
+    //public void CheckInZoneResource (bool playInZone)
+    //{
+    //    if (moveInZoneResource.IsZoneResource != playInZone)
+    //    {
+    //        moveInZoneResource.IsZoneResource = playInZone;
+    //    }
+    //}
 
     private void DrawRayToClosestTarget()
     {
