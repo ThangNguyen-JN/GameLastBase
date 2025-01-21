@@ -8,7 +8,6 @@ public class MovingState : CharacterState
 
     public override void EnterState()
     {
-        Debug.Log("Player is moving");
         stateManager.gunPlayer.enabled = false; 
     }
     public override void UpdateState()
@@ -21,6 +20,5 @@ public class MovingState : CharacterState
 
     public override void ExitState()
     {
-        Debug.Log("Exiting Moving State");
     }
 }

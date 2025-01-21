@@ -8,7 +8,6 @@ public class IdleTurretState : CharacterState
 
     public override void EnterState()
     {
-        Debug.Log("Start Shoot");
         stateManager.gunPlayer.enabled = true;
     }
     public override void UpdateState()
@@ -50,6 +49,5 @@ public class IdleTurretState : CharacterState
 
     public override void ExitState()
     {
-        Debug.Log("Exiting Idle State");
     }
 }

@@ -19,6 +19,8 @@ public class CharacterStateManager : MonoBehaviour
     public float rotationSpeed = 5f;
     public bool playerInZoneResource = false;
 
+    private GameObject closestResource;
+
     public new void StartCoroutine(IEnumerator coroutine)
     {
         base.StartCoroutine(coroutine);
@@ -36,8 +38,7 @@ public class CharacterStateManager : MonoBehaviour
         currentState = idleState;
         currentState.EnterState();
 
-        //moveInZoneResource.PlayerInZoneResource += CheckInZoneResource;
-        //CheckInZoneResource(playerInZoneResource);
+        
     }
 
     private void Update()
@@ -57,13 +58,26 @@ public class CharacterStateManager : MonoBehaviour
     {
         return movePlayer.joystick.Direction.sqrMagnitude > 0;
     }
-    //public void CheckInZoneResource (bool playInZone)
-    //{
-    //    if (moveInZoneResource.IsZoneResource != playInZone)
-    //    {
-    //        moveInZoneResource.IsZoneResource = playInZone;
-    //    }
-    //}
+
+    // test
+    public void SetClosestResource(GameObject resource)
+    {
+        closestResource = resource;
+    }
+
+    public void OnHarvestEventTriggered()
+    {
+        if (closestResource!= null)
+        {
+            ResourceObject resourceObject = closestResource.GetComponent<ResourceObject>();
+            if (resourceObject!= null)
+            {
+                resourceObject.Harvest();
+            }
+        }
+        Debug.Log("Harvest event triggered: Axe hit resource!");
+    }
+
 
     private void DrawRayToClosestTarget()
     {

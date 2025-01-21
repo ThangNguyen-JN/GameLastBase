@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GunBase : MonoBehaviour
 {
-    [SerializeField] protected DamageHandler damageHandler;
+    //[SerializeField] protected DamageHandler damageHandler;
     [SerializeField] protected FireRateHandler fireRateHandler;
     
     // Start is called before the first frame update
@@ -23,13 +23,13 @@ public abstract class GunBase : MonoBehaviour
         }
     }
 
-    protected void DealDamage(GameObject target)
-    {
-        if (damageHandler != null && target != null)
-        {
-            damageHandler.DealDamage(target);
-        }
-    }
+    //protected void DealDamage(GameObject target)
+    //{
+    //    if (damageHandler != null && target != null)
+    //    {
+    //        damageHandler.DealDamage(target);
+    //    }
+    //}
 
     public virtual void Shoot()
     {

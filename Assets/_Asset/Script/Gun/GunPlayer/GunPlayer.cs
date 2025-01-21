@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GunPlayer : GunBase
 {
+    public DamageHandler damageHandler;
     public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -16,6 +17,14 @@ public class GunPlayer : GunBase
         base.Start();
     }
     // Update is called once per frame
+
+    public void DealDamage(GameObject target)
+    {
+        if (damageHandler != null && target != null)
+        {
+            damageHandler.DealDamage(target);
+        }
+    }
 
     public override void Shoot()
     {

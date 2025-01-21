@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageUpdateSystem : MonoBehaviour
+public class DamageUpgradeSystem : MonoBehaviour
 {
     public event Action<int> CoinCostChangedUpDamage;
     public DamageHandler damageHandler;
@@ -26,14 +26,14 @@ public class DamageUpdateSystem : MonoBehaviour
     }
 
     private bool isPlayerInZone = false;
-    private Coroutine coinUpdateCoroutine;
+    private Coroutine coinUpgradeCoroutine;
 
 
     // Update is called once per frame
     void Awake()
     {
         LoadCurrentCostUpDamage();
-        LoadCostUpdateDamage();
+        LoadCostUpgadeDamage();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -41,9 +41,9 @@ public class DamageUpdateSystem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInZone = true;
-            if (coinUpdateCoroutine == null)
+            if (coinUpgradeCoroutine == null)
             {
-                coinUpdateCoroutine = StartCoroutine(ReduceCoinOverTime());
+                coinUpgradeCoroutine = StartCoroutine(ReduceCoinOverTime());
             }
         }
     }
@@ -53,10 +53,10 @@ public class DamageUpdateSystem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInZone = false;
-            if (coinUpdateCoroutine != null)
+            if (coinUpgradeCoroutine != null)
             {
-                StopCoroutine(coinUpdateCoroutine);
-                coinUpdateCoroutine = null;
+                StopCoroutine(coinUpgradeCoroutine);
+                coinUpgradeCoroutine = null;
             }
         }
     }
@@ -93,9 +93,9 @@ public class DamageUpdateSystem : MonoBehaviour
 
     public void UpdateDamage()
     {
-        damageHandler.UpdateDamageGun(damageIncrease);
+        damageHandler.UpgradeDamageGun(damageIncrease);
         damageCostUpdate += 10;
-        SaveCostUpdateDamage();
+        SaveCostUpgradeDamage();
         CurrentCostUpDamage = damageCostUpdate;
         SaveCurrentCostUpDamage();
 
@@ -114,13 +114,13 @@ public class DamageUpdateSystem : MonoBehaviour
 
 
     // Luu gia tien nang cap
-    public void SaveCostUpdateDamage()
+    public void SaveCostUpgradeDamage()
     {
         PlayerPrefs.SetInt("CostUpdateDamage", damageCostUpdate);
         PlayerPrefs.Save();
     }
 
-    public void LoadCostUpdateDamage()
+    public void LoadCostUpgadeDamage()
     {
         damageCostUpdate = PlayerPrefs.GetInt("CostUpdateDamage", 10);
     }
@@ -128,6 +128,6 @@ public class DamageUpdateSystem : MonoBehaviour
     public void OnApplicationQuit()
     {
         SaveCurrentCostUpDamage();
-        SaveCostUpdateDamage();
+        SaveCostUpgradeDamage();
     }
 }

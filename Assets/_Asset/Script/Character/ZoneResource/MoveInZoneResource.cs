@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveInZoneResource : MonoBehaviour
 {
     public event Action<bool> PlayerInZoneResource;
+    public CharacterStateManager stateManager;
     private bool isZoneResource = false;
     public GameObject axe;
     public GameObject axeBackPack;
@@ -31,6 +32,7 @@ public class MoveInZoneResource : MonoBehaviour
         if (other.CompareTag("ZoneResource"))
         {
             resourcesInZone.Add(other.gameObject);
+            stateManager.SetClosestResource(GetClosestResource());
             IsZoneResource = true;
             
             if (IsZoneResource == true)
@@ -44,24 +46,33 @@ public class MoveInZoneResource : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("ZoneResource"))
+        if (other.CompareTag("ZoneResource") && resourcesInZone.Contains(other.gameObject))
         {
             resourcesInZone.Remove(other.gameObject);
+            stateManager.SetClosestResource(GetClosestResource());
+            IsZoneResource = resourcesInZone.Count > 0;
             IsZoneResource = false;
 
             if (IsZoneResource == false)
             {
-                axe.SetActive(false);
-                gun.SetActive(true);
-                axeBackPack.SetActive(true);
+                ChangedTool();
             }
         }
     }
+
+    public void ChangedTool()
+    {
+        axe.SetActive(false);
+        gun.SetActive(true);
+        axeBackPack.SetActive(true);
+    }    
 
     public GameObject GetClosestResource()
     {
         GameObject closestResource = null;
         float closestDistance = Mathf.Infinity;
+
+        resourcesInZone.RemoveAll(resource => resource == null);
 
         foreach (var resource in resourcesInZone)
         {

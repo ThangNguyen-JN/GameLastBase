@@ -30,7 +30,7 @@ public class DamageHandler : MonoBehaviour
         
     }     
     
-    public void UpdateDamageGun(int value)
+    public void UpgradeDamageGun(int value)
     {
         Damage += value;
         SaveDamage();

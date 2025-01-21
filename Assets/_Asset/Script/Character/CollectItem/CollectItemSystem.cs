@@ -19,7 +19,13 @@ public class CollectItemSystem : MonoBehaviour
         {
             CollectItem(other.gameObject, "ItemSkull");
         }    
+
+        if (other.CompareTag("ItemWood"))
+        {
+            CollectItem(other.gameObject, "ItemWood");
+        }    
     }
+
 
     private void CollectItem(GameObject item, string resourceName)
     {

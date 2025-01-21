@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretGunSystem : GunBase
 {
+    public DamageTurretGun damageTurretGun;
     public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -18,6 +19,14 @@ public class TurretGunSystem : GunBase
 
 
     // Update is called once per frame
+
+    public void DealDamage(GameObject target)
+    {
+        if (damageTurretGun != null && target != null)
+        {
+            damageTurretGun.DealDamage(target);
+        }
+    }
 
     public override void Shoot()
     {
@@ -37,7 +46,7 @@ public class TurretGunSystem : GunBase
 
                 if (bulletScript != null)
                 {
-                    bulletScript.Initialize(fireDirection, damageHandler.Damage);
+                    bulletScript.Initialize(fireDirection, damageTurretGun.Damage);
                     Debug.Log("Bullet fired");
                 }
             }
