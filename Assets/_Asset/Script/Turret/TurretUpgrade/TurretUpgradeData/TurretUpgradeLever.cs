@@ -7,13 +7,17 @@ using System;
 public class TurretUpgradeLever
 {
     public string leverTurret;
+    public List<ResourceUpgradeTurret> requiredResources;
+    public GameObject turretPrefab;
+    public int damageIncrease;
+
+}
+
+
+[Serializable]
+public class ResourceUpgradeTurret
+{
     public string nameResource;
     public Sprite imageResource;
-    public int resourceQuantily;
-
-    public void SubtractAmountResource(int value)
-    {
-        resourceQuantily = Mathf.Clamp(resourceQuantily - value, 0, resourceQuantily);
-
-    }
+    public int quantilyResource;
 }

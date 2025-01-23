@@ -14,7 +14,6 @@ public class BulletTurret : MonoBehaviour
 
     public void Start()
     {
-
         Destroy(gameObject, lifeTime);
     }
 

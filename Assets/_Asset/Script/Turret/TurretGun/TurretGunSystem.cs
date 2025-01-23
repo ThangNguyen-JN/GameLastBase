@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class TurretGunSystem : GunBase
     public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public Transform parentBullet;
 
     private GameObject currentTarget;
 
@@ -30,6 +31,12 @@ public class TurretGunSystem : GunBase
 
     public override void Shoot()
     {
+        if (targetManager == null)
+        {
+            Debug.LogWarning("Target manager is not assigned!");
+            return;
+        }
+
         if (targetManager != null)
         {
             currentTarget = targetManager.FindClosestTarget(transform.position);
@@ -37,12 +44,12 @@ public class TurretGunSystem : GunBase
             if (currentTarget != null)
             {
                 Debug.Log("Shooting at target");
-                Vector3 fireDirection = firePoint.forward;
+                Vector3 fireDirection = (currentTarget.transform.position - firePoint.position).normalized;
                 fireDirection.y = 0;
                 fireDirection.Normalize();
 
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                GameObject bulletTurret = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity, parentBullet);
+                BulletTurret bulletScript = bulletTurret.GetComponent<BulletTurret>();
 
                 if (bulletScript != null)
                 {
@@ -51,5 +58,8 @@ public class TurretGunSystem : GunBase
                 }
             }
         }
+
     }
+
+
 }

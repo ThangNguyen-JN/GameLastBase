@@ -16,6 +16,11 @@ public class DamageTurretGun : MonoBehaviour
     {
     }
 
+    public void UpgradeDamage(int value)
+    {
+        Damage += value;
+    }    
+
 
     public void DealDamage(GameObject target)
     {

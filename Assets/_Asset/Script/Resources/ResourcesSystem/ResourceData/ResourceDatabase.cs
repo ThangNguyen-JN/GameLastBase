@@ -64,6 +64,27 @@ public class ResourceDatabase : ScriptableObject
         }
     }
 
+    public bool HasEnoughResources(List<ResourceUpgradeTurret> requiredResources)
+    {
+        foreach (var requiredResource in requiredResources)
+        {
+            var playerResource = GetResource(requiredResource.nameResource);
+            if (playerResource == null || playerResource.amount < requiredResource.quantilyResource)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void DeductResources(List<ResourceUpgradeTurret> requiredResources)
+    {
+        foreach (var requiredResource in requiredResources)
+        {
+            SubtractResource(requiredResource.nameResource, requiredResource.quantilyResource);
+        }
+    }
+
     //ham cho phep kich hoat su kien thu cong
     public void TriggerResourceChanged(Resource resource)
     {

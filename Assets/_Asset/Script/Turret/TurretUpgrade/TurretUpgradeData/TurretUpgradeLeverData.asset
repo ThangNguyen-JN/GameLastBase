@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c686e1d5057d849bf1ef0399ab9a60, type: 3}
   m_Name: TurretUpgradeLeverData
   m_EditorClassIdentifier: 
-  turretUpLever: []
+  turretUpLever:
+  - leverTurret: TURRET 1
+    requiredResources:
+    - nameResource: ItemWood
+      imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      quantilyResource: 1
+    - nameResource: ItemStone
+      imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+      quantilyResource: 1
+    turretPrefab: {fileID: 6310538413186256125, guid: 1a77d96db8f475b4c83671c34590e8ac, type: 3}
+    damageIncrease: 1
+  - leverTurret: TURRET 2
+    requiredResources:
+    - nameResource: ItemWood
+      imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      quantilyResource: 2
+    - nameResource: ItemStone
+      imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+      quantilyResource: 2
+    turretPrefab: {fileID: 5380522231952030703, guid: c72e81bee61c19d479b81fcddb4bd899, type: 3}
+    damageIncrease: 0

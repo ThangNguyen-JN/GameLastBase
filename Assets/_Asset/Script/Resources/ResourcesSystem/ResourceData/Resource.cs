@@ -21,6 +21,8 @@ public class Resource
     {
         amount = Mathf.Clamp(amount - value, 0, maxAmount);
     }
+
+    
 }
 
 [Serializable]
