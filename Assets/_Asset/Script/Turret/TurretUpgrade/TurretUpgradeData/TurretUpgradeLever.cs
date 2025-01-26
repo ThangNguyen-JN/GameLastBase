@@ -8,8 +8,7 @@ public class TurretUpgradeLever
 {
     public string leverTurret;
     public List<ResourceUpgradeTurret> requiredResources;
-    public GameObject turretPrefab;
-    public int damageIncrease;
+    //public int damageIncrease;
 
 }
 

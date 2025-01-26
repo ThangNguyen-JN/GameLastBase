@@ -6,11 +6,11 @@ public class TurretUpgradeManager : MonoBehaviour
 {
     public TurretUpgradeLeverDatabase turretDatabase;
     public ResourceDatabase resourceDatabase;
-    public DamageTurretGun damageTurret;
     private int currentLevel = 0;
 
     public GameObject currentTurret;
-    public Transform turretSpawnPoint;
+    public List<GameObject> turretsInScene;
+    //public Transform turretSpawnPoint;
     public Transform turretParent;
 
 
@@ -30,8 +30,8 @@ public class TurretUpgradeManager : MonoBehaviour
         if (resourceDatabase.HasEnoughResources(nextLevel.requiredResources))
         {
             resourceDatabase.DeductResources(nextLevel.requiredResources); // Trừ tài nguyên
-            SpawnTurret(nextLevel.turretPrefab);
-            UpgradeTurretDamage(nextLevel.damageIncrease);
+            ActivateTurret(currentLevel, currentLevel + 1);
+            //UpgradeTurretDamage(nextLevel.damageIncrease);
             currentLevel++; // Tăng cấp
             return true;
         }
@@ -40,30 +40,45 @@ public class TurretUpgradeManager : MonoBehaviour
         return false;
     }
 
-    private void SpawnTurret(GameObject turretPrefab)
+    private void ActivateTurret(int oldLevel, int newLevel)
     {
-        if (currentTurret != null)
+        // Tắt turret cũ
+        if (oldLevel < turretsInScene.Count && turretsInScene[oldLevel] != null)
         {
-            Destroy(currentTurret); // Hủy turret hiện tại
+            turretsInScene[oldLevel].SetActive(false);
         }
 
-        if (turretPrefab != null)
+        // Bật turret mới
+        if (newLevel < turretsInScene.Count && turretsInScene[newLevel] != null)
         {
-            currentTurret = Instantiate(turretPrefab, turretSpawnPoint.position, turretSpawnPoint.rotation, turretParent);
+            turretsInScene[newLevel].SetActive(true);
         }
     }
 
-    private void UpgradeTurretDamage(int damageIncrease)
-    {
-        if (currentTurret == null) return;
+    //private void SpawnTurret(GameObject turretPrefab)
+    //{
+    //    if (currentTurret != null)
+    //    {
+    //        Destroy(currentTurret); // Hủy turret hiện tại
+    //    }
 
-        
-        if (damageTurret != null)
-        {
-            damageTurret.UpgradeDamage(damageIncrease);
-            Debug.Log($"Increased turret damage by {damageIncrease}, current damage: {damageTurret.Damage}");
-        }
-    }
+    //    if (turretPrefab != null)
+    //    {
+    //        currentTurret = Instantiate(turretPrefab, turretSpawnPoint.position, turretSpawnPoint.rotation, turretParent);
+    //    }
+    //}
+
+    //private void UpgradeTurretDamage(int damageIncrease)
+    //{
+    //    if (currentTurret == null) return;
+
+    //    DamageTurretGun damageTurret = currentTurret.GetComponent<DamageTurretGun>();
+    //    if (damageTurret != null)
+    //    {
+    //        damageTurret.UpgradeDamage(damageIncrease);
+    //        Debug.Log($"Increased turret damage by {damageIncrease}, current damage: {damageTurret.Damage}");
+    //    }
+    //}
 
     public int GetCurrentLevel()
     {
