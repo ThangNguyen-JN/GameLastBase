@@ -12,6 +12,7 @@ TagManager:
   - ZoneResource
   - ItemWood
   - ItemStone
+  - TreeResource
   layers:
   - Default
   - TransparentFX

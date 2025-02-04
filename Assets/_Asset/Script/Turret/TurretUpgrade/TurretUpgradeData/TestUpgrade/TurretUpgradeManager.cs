@@ -7,7 +7,7 @@ public class TurretUpgradeManager : MonoBehaviour
     public TurretUpgradeLeverDatabase turretDatabase;
     public ResourceDatabase resourceDatabase;
     private int currentLevel = 0;
-
+    public SphereCollider areaDetectTrigger;
     public GameObject currentTurret;
     public List<GameObject> turretsInScene;
     //public Transform turretSpawnPoint;
@@ -31,6 +31,7 @@ public class TurretUpgradeManager : MonoBehaviour
         {
             resourceDatabase.DeductResources(nextLevel.requiredResources); // Trừ tài nguyên
             ActivateTurret(currentLevel, currentLevel + 1);
+            areaDetectTrigger.radius+=1;
             //UpgradeTurretDamage(nextLevel.damageIncrease);
             currentLevel++; // Tăng cấp
             return true;
@@ -55,31 +56,7 @@ public class TurretUpgradeManager : MonoBehaviour
         }
     }
 
-    //private void SpawnTurret(GameObject turretPrefab)
-    //{
-    //    if (currentTurret != null)
-    //    {
-    //        Destroy(currentTurret); // Hủy turret hiện tại
-    //    }
-
-    //    if (turretPrefab != null)
-    //    {
-    //        currentTurret = Instantiate(turretPrefab, turretSpawnPoint.position, turretSpawnPoint.rotation, turretParent);
-    //    }
-    //}
-
-    //private void UpgradeTurretDamage(int damageIncrease)
-    //{
-    //    if (currentTurret == null) return;
-
-    //    DamageTurretGun damageTurret = currentTurret.GetComponent<DamageTurretGun>();
-    //    if (damageTurret != null)
-    //    {
-    //        damageTurret.UpgradeDamage(damageIncrease);
-    //        Debug.Log($"Increased turret damage by {damageIncrease}, current damage: {damageTurret.Damage}");
-    //    }
-    //}
-
+    
     public int GetCurrentLevel()
     {
         return currentLevel;
