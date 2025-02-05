@@ -9,7 +9,6 @@ public class WorkerManager : MonoBehaviour
     public SafeZoneChecker safeZoneChecker;
     public WorkerMovement workerMovement;
     public WorkerCollectResource workerCollectResource;
-    private GameObject targetResource;
     private IWorkerState currentState;
     // Start is called before the first frame update
     void Start()
@@ -58,17 +57,36 @@ public class WorkerManager : MonoBehaviour
 
     public void StartCollecting() // bat dau thu thap tai nguyen
     {
-
+        GameObject nearestResource = GetNearestResourcePosition();
+        if (nearestResource != null)
+        {
+            workerCollectResource.StartCollecting(nearestResource);
+            Debug.Log("Start Collecting");
+        }
     }
 
-    public ResourceObject GetTargetResource()
+    public void HarvestEventTriggered()
     {
-        return targetResource != null ? targetResource.GetComponent<ResourceObject>() : null;
+        workerCollectResource.OnHarvestEventTriggered();
+        Debug.Log("Harvest Event Triggered");
+    }    
+
+    public void EndCollecting()
+    {
+        workerCollectResource.EndCollecting();
     }
+
+    public bool IsResourceDestroy()
+    {
+        return workerCollectResource.IsResourceDestroy();
+    }
+
+    // test
+
 
     public bool HasCollectedResource() //ktra thu thap xong chua
     {
-        return true;
+        return workerCollectResource.HasFinishedCollecting();
     }
 
     public Vector3 GetStoredPosition() // lay vi tri kho chua

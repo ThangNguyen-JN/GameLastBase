@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,37 +7,59 @@ public class WorkerCollectResource : MonoBehaviour
 {
     public Animator anim;
     private bool isCollecting = false;
-    private Action onCollectComplete;
+    private GameObject targetResource;
+    private bool isResourceDestroyed = false;
     // Start is called before the first frame update
-    public void StartCollecting(ResourceObject resource, Action callback)
+    public void StartCollecting(GameObject resource)
     {
-        if (isCollecting || resource == null || resource.resourceCount <= 0)
-        {
-            callback?.Invoke();
-            return;
-        }
-
+        targetResource = resource;
+        anim.SetBool("isCollecting", true);
         isCollecting = true;
-        onCollectComplete = callback;
-
-        if (anim != null)
-        {
-            anim.SetBool("isCollecting", true);
-        }
-
-        StartCoroutine(CollectResource(resource));
+        isResourceDestroyed = false;
     }
 
-    private IEnumerator CollectResource(ResourceObject resource)
+    public void EndCollecting()
     {
-        while (resource.resourceCount > 0)
-        {
-            yield return new WaitForSeconds(0.5f);
-            resource.Harvest();
-        }
-
+        anim.SetBool("isCollecting", false);
         isCollecting = false;
-        anim?.SetBool("isCollecting", false);
-        onCollectComplete?.Invoke();
+        targetResource = null;
+    }   
+
+    public void OnHarvestEventTriggered()
+    {
+ 
+        ResourceObject resourceObject = targetResource.GetComponentInParent<ResourceObject>();
+        if (resourceObject != null)
+        {
+            resourceObject.Harvest();
+            if (resourceObject.resourceCount <= 0)
+            {
+                isResourceDestroyed = true;
+                if (isResourceDestroyed == true)
+                {
+                    EndCollecting();
+                }
+            }
+
+        }
     }
+
+    public bool HasFinishedCollecting()
+    {
+        if (isCollecting)
+        {
+            return false; 
+        }
+        else
+        {
+            return true; 
+        }
+    }
+
+    public bool IsResourceDestroy()
+    {
+        return isResourceDestroyed;
+    }
+
+
 }

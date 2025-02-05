@@ -13,6 +13,7 @@ TagManager:
   - ItemWood
   - ItemStone
   - TreeResource
+  - WorkerWood
   layers:
   - Default
   - TransparentFX

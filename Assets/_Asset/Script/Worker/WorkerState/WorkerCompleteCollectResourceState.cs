@@ -7,6 +7,15 @@ public class WorkerCompleteCollectResourceState : IWorkerState
     public void EnterState(WorkerManager worker)
     {
         Debug.Log("Enter WorkerCompleteCollectResourceState State");
+        GameObject nextResource = worker.GetNearestResourcePosition();
+        if (nextResource != null)
+        {
+            worker.ChangeState(new WorkerMoveToResourceState());
+        }
+        else
+        {
+            worker.ChangeState(new WorkerIdleState());
+        }
     }
     public void UpdateState(WorkerManager worker)
     {

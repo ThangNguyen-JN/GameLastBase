@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class ResourceObject : MonoBehaviour
     public GameObject tree2;
     public GameObject tree1;
     public GameObject tree0;
+    public static event Action<ResourceObject> OnResourceDestroyed;
 
     public void Harvest()
     {
@@ -36,6 +38,7 @@ public class ResourceObject : MonoBehaviour
             }
             else if (resourceCount <= 0)
             {
+                OnResourceDestroyed?.Invoke(this);
                 Destroy(treeResource);
                 
                 tree0.SetActive(true);
@@ -48,9 +51,11 @@ public class ResourceObject : MonoBehaviour
     {
         if (dropPrefab != null && dropPosition != null)
         {
-            Vector2 randomCircle = Random.insideUnitCircle * dropRadius;
+            Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * dropRadius;
             Vector3 randomPosition = dropPosition.position + new Vector3(randomCircle.x, 0, randomCircle.y);
             Instantiate(dropPrefab, randomPosition, Quaternion.identity);
         }
     }
+
+     
 }

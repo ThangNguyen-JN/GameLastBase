@@ -7,18 +7,30 @@ public class SafeZoneChecker : MonoBehaviour
     public List<GameObject> resourcesInZone = new List<GameObject>();
     public string resourceTag;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.CompareTag (resourceTag))
+        ResourceObject.OnResourceDestroyed += RemoveResource;
+    }
+
+    private void OnDisable()
+    {
+        ResourceObject.OnResourceDestroyed -= RemoveResource;
+    }
+
+    public void AddResource(GameObject resource)
+    {
+        if (!resourcesInZone.Contains(resource))
         {
-            resourcesInZone.Add (other.gameObject);
+            resourcesInZone.Add(resource);
         }
     }
-    private void OnTriggerExit(Collider other)
+
+    public void RemoveResource(ResourceObject resource)
     {
-        if (other.CompareTag(resourceTag))
+        if (resource != null && resourcesInZone.Contains(resource.gameObject))
         {
-            resourcesInZone.Remove(other.gameObject);
+            resourcesInZone.Remove(resource.gameObject);
+            Debug.Log("Resource removed from list.");
         }
     }
 
@@ -33,10 +45,12 @@ public class SafeZoneChecker : MonoBehaviour
                 resourcesInZone.Add(collider.gameObject);
             }
         }
+        RemoveNullResource();
     }
 
     public bool HasResourceInSafeZone()
     {
+        RemoveNullResource();
         return resourcesInZone.Count > 0;
     }
     
@@ -44,11 +58,15 @@ public class SafeZoneChecker : MonoBehaviour
 
     public GameObject GetNearestResource(Vector3 position)
     {
+        RemoveNullResource();
+        if (resourcesInZone.Count == 0) return null;
         GameObject nearestResource = null;
-        float minDistance = float.MaxValue;
+        float minDistance = Mathf.Infinity;
 
-        foreach (var resource in resourcesInZone)
+        foreach (GameObject resource in resourcesInZone)
         {
+            if (resource == null) continue;
+
             float distance = Vector3.Distance(position, resource.transform.position);
             if ( distance < minDistance)
             {
@@ -58,4 +76,9 @@ public class SafeZoneChecker : MonoBehaviour
         }
         return nearestResource;
     }
+
+    private void RemoveNullResource()
+    {
+        resourcesInZone.RemoveAll(resource => resource == null);
+    }    
 }
