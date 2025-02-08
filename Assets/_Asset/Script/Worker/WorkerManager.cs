@@ -9,6 +9,7 @@ public class WorkerManager : MonoBehaviour
     public SafeZoneChecker safeZoneChecker;
     public WorkerMovement workerMovement;
     public WorkerCollectResource workerCollectResource;
+    public QuantityResourceWorker quantityResource;
     private IWorkerState currentState;
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,8 @@ public class WorkerManager : MonoBehaviour
         workerMovement.MoveToResource(resource);
     }
 
-    public bool HasReachedDestination()
+    
+    public bool HasReachedDestination() //kiem tra worker den dich chua
     {
         return workerMovement.HasReachedDestination();
     }
@@ -89,9 +91,21 @@ public class WorkerManager : MonoBehaviour
         return workerCollectResource.HasFinishedCollecting();
     }
 
-    public Vector3 GetStoredPosition() // lay vi tri kho chua
+    public GameObject GetStoredPosition() // lay vi tri kho chua
     {
-        return Vector3.zero;
+        return workerMovement.targetStorage;
+    }
+    public void MoveToStorage(GameObject storagePosition)
+    {
+        if (storagePosition != null)
+        {
+            workerMovement.MoveToStorageHome(storagePosition);
+        }
+    }
+
+    public bool HasReachedStorage()
+    {
+        return workerMovement.HasReachedDestination();
     }
 
     public void StoreResource() // cat tai nguyen vao kho
@@ -105,4 +119,6 @@ public class WorkerManager : MonoBehaviour
     }
 
    
+
+
 }

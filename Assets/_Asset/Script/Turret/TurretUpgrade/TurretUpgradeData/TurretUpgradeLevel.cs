@@ -4,9 +4,9 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class TurretUpgradeLever
+public class TurretUpgradeLevel
 {
-    public string leverTurret;
+    public string levelTurret;
     public List<ResourceUpgradeTurret> requiredResources;
     //public int damageIncrease;
 

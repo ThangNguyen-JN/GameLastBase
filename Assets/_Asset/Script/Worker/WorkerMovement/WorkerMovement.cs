@@ -8,6 +8,7 @@ public class WorkerMovement : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject targetResource;
     public Animator anim;
+    public GameObject targetStorage;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,26 @@ public class WorkerMovement : MonoBehaviour
         }
     }
 
+    public void MoveToStorageHome(GameObject storageHome)
+    {
+        if (storageHome != null)
+        {
+            targetStorage = storageHome;
+            agent.SetDestination(storageHome.transform.position);
+        }
+    }
+
     public bool HasReachedDestination()
     {
-        return !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance;
+        if (agent.pathPending == true)
+        {
+            return false;
+        }
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            return true;
+        }
+        return false;
     }
     private void OnDrawGizmos()
     {

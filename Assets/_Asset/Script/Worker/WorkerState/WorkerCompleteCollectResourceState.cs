@@ -19,7 +19,6 @@ public class WorkerCompleteCollectResourceState : IWorkerState
     }
     public void UpdateState(WorkerManager worker)
     {
-        
     }
 
     public void ExitState(WorkerManager worker)

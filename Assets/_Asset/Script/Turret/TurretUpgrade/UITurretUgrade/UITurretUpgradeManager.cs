@@ -15,17 +15,13 @@ public class UITurretUpgradeManager : MonoBehaviour
     {
         UpdateUI();
     }
-    //private void Start()
-    //{
-    //    UpdateUI(); // Khởi tạo giao diện
-    //    //upgradeButton.onClick.AddListener(OnUpgradeButtonClick); // Gắn sự kiện cho nút nâng cấp
-    //}
+   
 
     public void UpdateUI()
     {
         // Lấy cấp độ hiện tại và thông tin cấp tiếp theo
         int currentLevel = turretUpgradeManager.GetCurrentLevel();
-        TurretUpgradeLever nextLevel = turretUpgradeManager.GetNextLevel();
+        TurretUpgradeLevel nextLevel = turretUpgradeManager.GetNextLevel();
 
         // Cập nhật cấp độ hiện tại
         if (nextLevel == null)
@@ -35,7 +31,7 @@ public class UITurretUpgradeManager : MonoBehaviour
             return;
         }
 
-        currentLevelText.text = $"TURRET: {currentLevel + 1}";
+        currentLevelText.text = $"TURRET: {currentLevel}";
 
         // Xóa tài nguyên cũ
         foreach (Transform child in resourceListContainer)
@@ -52,24 +48,6 @@ public class UITurretUpgradeManager : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            turretUpgradeManager.TryUpgrade();
-            UpdateUI();
-        }
-    }
-
-    //private void OnUpgradeButtonClick()
-    //{
-    //    // Thực hiện nâng cấp và cập nhật giao diện
-    //    if (turretUpgradeManager.TryUpgrade())
-    //    {
-    //        UpdateUI();
-    //    }
-    //}
-
-
+    
 
 }

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TurretUpgradeLeverData", menuName = "Turret Upgrade/Lever Data")]
-public class TurretUpgradeLeverDatabase : ScriptableObject
+public class TurretUpgradeLevelDatabase : ScriptableObject
 {
-    public List<TurretUpgradeLever> turretUpLever = new List<TurretUpgradeLever>();
+    public List<TurretUpgradeLevel> turretUpLevel = new List<TurretUpgradeLevel>();
 
 }  

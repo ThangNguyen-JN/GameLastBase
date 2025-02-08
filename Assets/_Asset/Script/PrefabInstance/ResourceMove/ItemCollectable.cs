@@ -14,6 +14,9 @@ public class ItemCollectable : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = false; // Tắt NavMeshAgent
+        agent.updateRotation = false;
+        agent.angularSpeed = 0f;
+        agent.autoBraking = false;
     }
 
     public void MoveToTarget(Transform newTarget)
@@ -37,7 +40,6 @@ public class ItemCollectable : MonoBehaviour
 
     private void CollectResource()
     {
-        Debug.Log("Tài nguyên đã đến nơi!");
         Destroy(gameObject); // Hủy vật phẩm sau khi đến nơi
     }
 }
