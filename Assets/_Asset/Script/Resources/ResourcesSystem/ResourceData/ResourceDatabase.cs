@@ -64,6 +64,15 @@ public class ResourceDatabase : ScriptableObject
         }
     }
 
+    public void UpgradeMaxAmountInventory(int value)
+    {
+        foreach (var resource in resources)
+        {
+            resource.UpgradeMaxAmount(value);
+            TriggerResourceChanged(resource);
+        }
+    }
+
     public bool HasEnoughResources(List<ResourceUpgradeTurret> requiredResources)
     {
         foreach (var requiredResource in requiredResources)

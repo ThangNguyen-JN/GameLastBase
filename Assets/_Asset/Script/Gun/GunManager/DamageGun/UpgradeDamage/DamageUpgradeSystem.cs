@@ -12,7 +12,7 @@ public class DamageUpgradeSystem : MonoBehaviour
     //public Transform playerTransformEffect;
 
     private int damageIncrease = 1;
-    private int damageCostUpdate = 10;
+    private int damageCostUpgrade = 10;
     private int currentCostUpDamage;
 
     public int CurrentCostUpDamage
@@ -38,7 +38,7 @@ public class DamageUpgradeSystem : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerUpgrade"))
         {
             isPlayerInZone = true;
             if (coinUpgradeCoroutine == null)
@@ -50,7 +50,7 @@ public class DamageUpgradeSystem : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerUpgrade"))
         {
             isPlayerInZone = false;
             if (coinUpgradeCoroutine != null)
@@ -86,17 +86,17 @@ public class DamageUpgradeSystem : MonoBehaviour
         if (CurrentCostUpDamage <= 0)
         {
 
-            UpdateDamage();
+            UpgradeDamage();
 
         }
     }
 
-    public void UpdateDamage()
+    public void UpgradeDamage()
     {
         damageHandler.UpgradeDamageGun(damageIncrease);
-        damageCostUpdate += 10;
+        damageCostUpgrade += 10;
         SaveCostUpgradeDamage();
-        CurrentCostUpDamage = damageCostUpdate;
+        CurrentCostUpDamage = damageCostUpgrade;
         SaveCurrentCostUpDamage();
 
     }
@@ -116,13 +116,13 @@ public class DamageUpgradeSystem : MonoBehaviour
     // Luu gia tien nang cap
     public void SaveCostUpgradeDamage()
     {
-        PlayerPrefs.SetInt("CostUpdateDamage", damageCostUpdate);
+        PlayerPrefs.SetInt("CostUpdateDamage", damageCostUpgrade);
         PlayerPrefs.Save();
     }
 
     public void LoadCostUpgadeDamage()
     {
-        damageCostUpdate = PlayerPrefs.GetInt("CostUpdateDamage", 10);
+        damageCostUpgrade = PlayerPrefs.GetInt("CostUpdateDamage", 10);
     }
 
     public void OnApplicationQuit()

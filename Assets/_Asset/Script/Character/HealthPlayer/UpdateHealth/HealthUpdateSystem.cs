@@ -39,7 +39,7 @@ public class HealthUpdateSystem : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerUpgrade"))
         {
             isPlayerInZone = true;
             if (coinUpdateCoroutine == null)
@@ -51,7 +51,7 @@ public class HealthUpdateSystem : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerUpgrade"))
         {
             isPlayerInZone = false;
             if (coinUpdateCoroutine != null)

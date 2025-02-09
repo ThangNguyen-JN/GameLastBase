@@ -16,10 +16,10 @@ MonoBehaviour:
   - levelTurret: Turret 1
     requiredResources:
     - nameResource: ItemWood
-      imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      imageResource: {fileID: 21300000, guid: 48f5d433f9640fb44b0d43aa7fac55d7, type: 3}
       quantilyResource: 2
     - nameResource: ItemStone
-      imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+      imageResource: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
       quantilyResource: 2
   - levelTurret: Turret 2
     requiredResources:

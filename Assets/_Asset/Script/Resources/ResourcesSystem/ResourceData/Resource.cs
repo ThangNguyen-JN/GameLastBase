@@ -22,6 +22,11 @@ public class Resource
         amount = Mathf.Clamp(amount - value, 0, maxAmount);
     }
 
+    public void UpgradeMaxAmount (int value)
+    {
+        maxAmount += value;
+    }
+
     
 }
 

@@ -12,14 +12,6 @@ public class HealthPlayer : HealthManager
         Health = MaxHealth;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            UpdateMaxHealth(15);
-        }
-    }
-
     public override void TakeDamage(int damage)
     {
         Health -= damage;
