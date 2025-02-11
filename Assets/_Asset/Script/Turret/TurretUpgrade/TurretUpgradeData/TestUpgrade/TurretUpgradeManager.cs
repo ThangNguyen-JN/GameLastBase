@@ -12,7 +12,6 @@ public class TurretUpgradeManager : MonoBehaviour
     public List<GameObject> turretsInScene;
     public UITurretUpgradeManager uiTurretUpgrade;
     //public Transform turretSpawnPoint;
-    public Transform turretParent;
     private string savePath;
     
     //test id Zone

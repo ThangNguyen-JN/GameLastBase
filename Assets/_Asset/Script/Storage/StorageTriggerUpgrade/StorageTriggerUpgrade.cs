@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerUpgradeTurret : MonoBehaviour
+public class StorageTriggerUpgrade : MonoBehaviour
 {
-
-    public TurretUpgradeManager turretUpgradeManager;
-    public UITurretUpgradeManager uiTurretUpgrade;
-    public ResourceDatabase resourceDatabase;
+    public StorageUpgradeManage storageUpManager;
+    public StorageUpgradeUI storageUpUi;
+    public ResourceDatabase resourceData;
 
     public bool isUpgrading = false;
     private bool isPlayerInside = false;
@@ -17,9 +16,9 @@ public class TriggerUpgradeTurret : MonoBehaviour
         if (!isUpgrading && other.CompareTag("PlayerUpgrade"))
         {
             isPlayerInside = true;
-            Debug.Log("Trigger Turret Upgrade");
             StartCoroutine(MinusResourcesAndUpgrade());
-        }
+
+        }    
     }
 
     public void OnTriggerExit(Collider other)
@@ -34,7 +33,7 @@ public class TriggerUpgradeTurret : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         isUpgrading = true;
-        TurretUpgradeLevel nextLevel = turretUpgradeManager.GetNextLevel();
+        StorageUpgradeLevel nextLevel = storageUpManager.GetNextLevel();
         if (nextLevel == null)
         {
             Debug.Log("Turret max lever");
@@ -44,40 +43,42 @@ public class TriggerUpgradeTurret : MonoBehaviour
         while (isPlayerInside == true)
         {
             bool upgrading = false;
-            foreach (var resource in nextLevel.requiredResources)
+            foreach (var resource in nextLevel.resourceUpgradeStorages)
             {
-                if (resource.quantilyResource > 0)
+                if (resource.quantityResource > 0)
                 {
-                    int availableAmount = resourceDatabase.GetResource(resource.nameResource).amount;
+                    int availableAmount = resourceData.GetResource(resource.nameResource).amount;
                     if (availableAmount > 0)
                     {
                         int subtractAmount = Mathf.Min(availableAmount, 1); // Trừ từng chút một
-                        resourceDatabase.SubtractResource(resource.nameResource, subtractAmount);
-                        resource.quantilyResource -= subtractAmount;
+                        resourceData.SubtractResource(resource.nameResource, subtractAmount);
+                        resource.quantityResource -= subtractAmount;
                         upgrading = true; // Còn tài nguyên để trừ thì tiếp tục lặp
                     }
                 }
+
             }
-            uiTurretUpgrade.UpdateUI();
+            storageUpUi.UpdateUIStorage();
             yield return new WaitForSeconds(0.3f);
             if (!upgrading) break;
         }
 
         if (AllResourcesDepleted(nextLevel))
         {
-            turretUpgradeManager.UpgradeComplete();
+            storageUpManager.UpgradeStorageComplete();
         }
 
-        resourceDatabase.SaveResource();
-        uiTurretUpgrade.UpdateUI();
+        resourceData.SaveResource();
+        storageUpUi.UpdateUIStorage();
         yield return new WaitForSeconds(2f);
         isUpgrading = false;
     }
-    private bool AllResourcesDepleted(TurretUpgradeLevel nextLevel)
+
+    private bool AllResourcesDepleted(StorageUpgradeLevel nextLevel)
     {
-        foreach (var resource in nextLevel.requiredResources)
+        foreach (var resource in nextLevel.resourceUpgradeStorages)
         {
-            if (resource.quantilyResource > 0)
+            if (resource.quantityResource > 0)
                 return false;
         }
         return true;
