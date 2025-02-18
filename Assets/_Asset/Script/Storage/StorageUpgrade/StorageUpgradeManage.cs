@@ -9,25 +9,27 @@ public class StorageUpgradeManage : MonoBehaviour
     public GameObject currentStorage;
     public List<GameObject> storageInScene;
     public StorageUpgradeUI storageUpgradeUI;
+    public StorageQuantity storageQuantity;
 
     private string savePath;
     public string storageID;
     private string saveKey;
 
-    public void Initialize(string newZoneID)
-    {
-        if (string.IsNullOrEmpty(newZoneID))
-        {
-            Debug.LogError("ZoneID is null or empty! Cannot initialize.");
-            return;
-        }
 
-        storageID = newZoneID;
-        saveKey = "StorageUpgrade_" + storageID;
-        savePath = Application.persistentDataPath + "/storage_" + storageID + "_save.json";
-        LoadStorageData();
-    }
-    public void Start()
+    //public void Initialize(string newZoneID)
+    //{
+    //    if (string.IsNullOrEmpty(newZoneID))
+    //    {
+    //        Debug.LogError("ZoneID is null or empty! Cannot initialize.");
+    //        return;
+    //    }
+
+    //    storageID = newZoneID;
+    //    saveKey = "StorageUpgrade_" + storageID;
+    //    savePath = Application.persistentDataPath + "/storage_" + storageID + "_save.json";
+    //    LoadStorageData();
+    //}
+    public void Awake()
     {
         //savePath = Application.persistentDataPath + "/turret_save.json";
         //LoadTurretData();
@@ -53,6 +55,7 @@ public class StorageUpgradeManage : MonoBehaviour
 
         currentLevel++;
         ActivateStorage(currentLevel - 1, currentLevel);
+        storageQuantity.UpgradeMaxResource(5);
         SaveStorageData();
     }
 
@@ -93,18 +96,15 @@ public class StorageUpgradeManage : MonoBehaviour
         StorageUpgradeSaveData saveData = new StorageUpgradeSaveData
         {
             storageLevel = storageData.storageUpLevel[currentLevel].levelStorage,
-            resourceUpgradeStorages = storageData.storageUpLevel[currentLevel].resourceUpgradeStorages
+            resourceUpgradeStorages = storageData.storageUpLevel[currentLevel].resourceUpgradeStorages,
+            currentResource = storageQuantity.CurrentResource,
+            maxResource = storageQuantity.maxResource
         };
 
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(savePath, json);
-
-        // Test
         PlayerPrefs.SetString(saveKey, json);
         PlayerPrefs.Save();
-        //PlayerPrefs.SetString("TurretUpgradeZone1", json);
-        //PlayerPrefs.Save();
-        Debug.Log($"Saved turret data at {savePath}");
     }
 
     public void LoadStorageData()
@@ -119,12 +119,6 @@ public class StorageUpgradeManage : MonoBehaviour
         {
             json = PlayerPrefs.GetString(saveKey);
         }
-        //else if (PlayerPrefs.HasKey("TurretUpgradeZone1"))
-        //{
-        //    json = PlayerPrefs.GetString("TurretUpgradeZone1");
-        //    Debug.Log("Loaded turret data from PlayerPrefs.");
-        //}
-
 
         if (!string.IsNullOrEmpty(json))
         {
@@ -136,7 +130,8 @@ public class StorageUpgradeManage : MonoBehaviour
             currentLevel = loadedLevel;
             storageData.storageUpLevel[currentLevel].resourceUpgradeStorages = loadedData.resourceUpgradeStorages;
 
-            Debug.Log($"Loaded turret level {currentLevel} with saved resources.");
+            storageQuantity.CurrentResource = loadedData.currentResource;
+            storageQuantity.maxResource = loadedData.maxResource;
 
             // Bật đúng turret khi load
             for (int i = 0; i < storageInScene.Count; i++)
@@ -163,6 +158,39 @@ public class StorageUpgradeManage : MonoBehaviour
     {
         public string storageLevel;
         public List<ResourceUpgradeStorage> resourceUpgradeStorages;
+        public int currentResource;
+        public int maxResource;
+    }
+
+    [ContextMenu("Reset Turret Data")]
+    public void ResetStorageData()
+    {
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log($"Deleted save file: {savePath}");
+        }
+
+        if (PlayerPrefs.HasKey(saveKey))
+        {
+            PlayerPrefs.DeleteKey(saveKey);
+            PlayerPrefs.Save();
+            Debug.Log($"Deleted PlayerPrefs key: {saveKey}");
+        }
+
+        // Đặt lại level về mặc định
+        currentLevel = 0;
+        for (int i = 0; i < storageInScene.Count; i++)
+        {
+            storageInScene[i].SetActive(i == currentLevel);
+        }
+
+        if (storageUpgradeUI != null)
+        {
+            storageUpgradeUI.UpdateUIStorage();
+        }
+
+        Debug.Log($"Reset turret data for {storageID}");
     }
 
 }

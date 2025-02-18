@@ -15,17 +15,17 @@ MonoBehaviour:
   resources:
   - resourceName: ItemSkull
     iconPath: {fileID: 21300000, guid: eceebebca2c14a048bca4753aa223e21, type: 2}
-    amount: 1
+    amount: 29
     maxAmount: 35
     unlock: 1
   - resourceName: ItemWood
-    iconPath: {fileID: 21300000, guid: 48f5d433f9640fb44b0d43aa7fac55d7, type: 3}
-    amount: 18
+    iconPath: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+    amount: 10
     maxAmount: 35
     unlock: 1
   - resourceName: ItemStone
     iconPath: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
-    amount: 18
+    amount: 1
     maxAmount: 35
     unlock: 1
   - resourceName: ItemScrap

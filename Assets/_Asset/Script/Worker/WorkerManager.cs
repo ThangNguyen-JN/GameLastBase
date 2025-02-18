@@ -10,6 +10,7 @@ public class WorkerManager : MonoBehaviour
     public WorkerMovement workerMovement;
     public WorkerCollectResource workerCollectResource;
     public QuantityResourceWorker quantityResource;
+    public StorageQuantity storageQuantity;
     private IWorkerState currentState;
     // Start is called before the first frame update
     void Start()

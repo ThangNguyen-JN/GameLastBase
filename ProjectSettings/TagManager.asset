@@ -15,6 +15,7 @@ TagManager:
   - TreeResource
   - WorkerWood
   - PlayerUpgrade
+  - PlayerChasing
   layers:
   - Default
   - TransparentFX

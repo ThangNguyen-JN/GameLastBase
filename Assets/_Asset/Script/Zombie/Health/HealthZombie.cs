@@ -9,6 +9,8 @@ public class HealthZombie : HealthManager
     public GameObject zombie;
     public DropItem dropItem;
 
+    public ZomManager zomManager;
+
     public bool isDead = false;
     private void Start()
     {
@@ -17,6 +19,7 @@ public class HealthZombie : HealthManager
 
     public override void TakeDamage(int damage)
     {
+        if (isDead) return;
         Health -= damage;
         if (Health <=0) 
         {
@@ -26,14 +29,24 @@ public class HealthZombie : HealthManager
 
     public override void Die()
     {
+        if (isDead) return; 
+
         isDead = true;
-        onDead?.Invoke(isDead);
+        Debug.Log("Zombie da chet! Goi su kien onDead.");
+        onDead?.Invoke(true);
+
+        Destroy(gameObject);
+
         if (dropItem != null)
         {
             dropItem.DropItems(transform.position);
         }
-        Destroy(gameObject);
-        Destroy(zombie, 4f);
+
+        // chuyen sang trang trai die
+        if (zomManager != null)
+        {
+            zomManager.ChangeState(new ZombieDieState());
+        }
     }
 
    
