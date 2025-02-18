@@ -100,24 +100,26 @@ public class ResourceDatabase : ScriptableObject
         OnResourceChanged?.Invoke(resource); //kich hoat su kien voi tai nguyen cu the
     }
 
-    [ContextMenu("Save Resource")]
-    public void SaveResource()
-    {
-        ResourceSaveData saveData = new ResourceSaveData();
-        saveData.resources = this.resources;
-        string json = JsonUtility.ToJson(saveData, true);
-        PlayerPrefs.SetString("ResourceDatabase", json);
-        PlayerPrefs.Save();
-    }
-
-    public void LoadResource()
-    {
-        string json = PlayerPrefs.GetString("ResourceDatabase", "{}");
-        ResourceSaveData saveData = JsonUtility.FromJson<ResourceSaveData>(json);
-        this.resources = saveData.resources;
-        JsonUtility.FromJsonOverwrite(json, this);
-    }
+    
 }
+
+//[ContextMenu("Save Resource")]
+//public void SaveResource()
+//{
+//    ResourceSaveData saveData = new ResourceSaveData();
+//    saveData.resources = this.resources;
+//    string json = JsonUtility.ToJson(saveData, true);
+//    PlayerPrefs.SetString("ResourceDatabase", json);
+//    PlayerPrefs.Save();
+//}
+
+//public void LoadResource()
+//{
+//    string json = PlayerPrefs.GetString("ResourceDatabase", "{}");
+//    ResourceSaveData saveData = JsonUtility.FromJson<ResourceSaveData>(json);
+//    this.resources = saveData.resources;
+//    JsonUtility.FromJsonOverwrite(json, this);
+//}
 
 
 

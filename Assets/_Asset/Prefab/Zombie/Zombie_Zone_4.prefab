@@ -79,7 +79,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: d4ddcc8a5cf9c154ba72a92b87350560, type: 2}
+  m_Mesh: {fileID: 4300000, guid: cfd159b7d3c47db449b293fefeda3343, type: 2}
   m_Bones:
   - {fileID: 5742413829700334961}
   - {fileID: 4632580383009195147}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 650271285264443664}
   - component: {fileID: 4953509180928447101}
   m_Layer: 0
-  m_Name: Zombie_Zone_3
+  m_Name: Zombie_Zone_4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,9 +718,9 @@ MonoBehaviour:
   movement: {fileID: 650271285264443664}
   target: {fileID: 0}
   canSeePlayer: 0
-  patrolCenter: {x: -67.2, y: 0.3, z: 37.7}
-  patrolWidth: 38.5
-  patrolHeight: 76.4
+  patrolCenter: {x: 9.96, y: 0.3, z: 114.9}
+  patrolWidth: 99.5
+  patrolHeight: 35.9
   patrolWaitTime: 3
   stopDistance: 2
   playerInZone: 0
@@ -13557,7 +13557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ef845ff1646344d88b1f6b89cd2e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 120
   zombie: {fileID: 746617444906468996}
   dropItem: {fileID: 13981668088687418}
   zomManager: {fileID: 4916996409462224630}
@@ -15904,7 +15904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - itemPrefab: {fileID: 1529728774919129, guid: 63988006ff1c68543a99b1b6122f68ee, type: 3}
-    dropQuantity: 3
+    dropQuantity: 4
   randomRadius: 1.5
   dropHeight: 1
   dropDuration: 0.2

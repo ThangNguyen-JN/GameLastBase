@@ -76,7 +76,7 @@ public class UpgradeInventoryTrigger : MonoBehaviour
     {
         ResourceDatabase resourceData = ResourceDatabase.Instance;
         resourceData.UpgradeMaxAmountInventory(inventoryIncrease);
-        resourceData.SaveResource();
+        //resourceData.SaveResource();
         inventoryCostUpgrade += 30;
         SaveCostUpgradeInventory();
         CurrentCostUpInventory = inventoryCostUpgrade;

@@ -32,7 +32,6 @@ public class HealthZombie : HealthManager
         if (isDead) return; 
 
         isDead = true;
-        Debug.Log("Zombie da chet! Goi su kien onDead.");
         onDead?.Invoke(true);
 
         Destroy(gameObject);

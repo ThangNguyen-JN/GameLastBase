@@ -49,7 +49,7 @@ public class ExchangeCoinSkullTrigger : MonoBehaviour
                 coinManager.AddCoin(1);
                 //ExchangeCoinSkull?.Invoke(1);
 
-                resourceDatabase.SaveResource();
+                //resourceDatabase.SaveResource();
                 coinManager.SaveCoin();
                 yield return new WaitForSeconds(0.2f);
             }

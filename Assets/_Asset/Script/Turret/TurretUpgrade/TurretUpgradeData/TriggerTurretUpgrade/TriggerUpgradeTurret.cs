@@ -68,7 +68,7 @@ public class TriggerUpgradeTurret : MonoBehaviour
             turretUpgradeManager.UpgradeComplete();
         }
 
-        resourceDatabase.SaveResource();
+        //resourceDatabase.SaveResource();
         uiTurretUpgrade.UpdateUI();
         yield return new WaitForSeconds(2f);
         isUpgrading = false;

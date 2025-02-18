@@ -43,7 +43,7 @@ public class CharacterCollectItemSystem : MonoBehaviour
         {
             changeResource.AddResource(resourceName, 1);
             Debug.Log("Add Resource");
-            ResourceDatabase.Instance.SaveResource();
+            //ResourceDatabase.Instance.SaveResource();
             Destroy(item);
         });
         //item.transform.DORotate(new Vector3(0, 0, 0), moveDuration, RotateMode.FastBeyond360);

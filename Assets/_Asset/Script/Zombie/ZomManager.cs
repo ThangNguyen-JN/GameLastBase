@@ -30,7 +30,7 @@ public class ZomManager : MonoBehaviour
     void Start()
     {
         movement = GetComponent<ZombieMovement>();
-        ChangeState(new ZombieSpawnState()); //bat dau voi trang thai idle
+        ChangeState(new ZombieSpawnState()); //bat dau voi trang thai spawn
     }
 
     void Update()

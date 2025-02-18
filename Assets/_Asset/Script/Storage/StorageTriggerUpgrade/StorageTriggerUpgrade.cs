@@ -68,7 +68,7 @@ public class StorageTriggerUpgrade : MonoBehaviour
             storageUpManager.UpgradeStorageComplete();
         }
 
-        resourceData.SaveResource();
+        //resourceData.SaveResource();
         storageUpUi.UpdateUIStorage();
         yield return new WaitForSeconds(2f);
         isUpgrading = false;

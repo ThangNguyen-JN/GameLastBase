@@ -33,7 +33,7 @@ public class ResourceUIManager : MonoBehaviour
         {
             if (iconUI != null)
             {
-                iconUI.sprite = resource.iconPath;
+                iconUI.sprite = resource.icon;
             }
             UpdateAmountText(resource);
         }

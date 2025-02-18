@@ -8,6 +8,8 @@ public class ZombieDieState : IZombieState
     {
         Debug.Log("Zombie is dying...");
         zombie.movement.StopMoving();
+        zombie.movement.ZombieDie();
+        
 
         if (zombie.anim != null)
         {

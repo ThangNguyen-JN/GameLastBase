@@ -30,4 +30,12 @@ public class ZombieMovement : MonoBehaviour
     {
         agent.ResetPath();
     }
+
+    public void ZombieDie()
+    {
+        agent.ResetPath();
+        agent.speed = 0;
+        agent.angularSpeed = 0;
+
+    }
 }
