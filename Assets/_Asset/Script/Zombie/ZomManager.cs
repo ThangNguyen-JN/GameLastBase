@@ -61,19 +61,7 @@ public class ZomManager : MonoBehaviour
 
         if (other.CompareTag("PlayerChasing"))
         {
-            //target = null;
-            //Debug.Log("Player out of range");
-            //canSeePlayer = false;
-            //ChangeState(new ZombieIdleState());
-            //Collider[] playersInZone = Physics.OverlapSphere(transform.position, 5f, LayerMask.GetMask("Player"));
-            //Debug.Log($"Players in zone count: {playersInZone.Length}");
-            //if (playersInZone.Length == 0) // khong con player
-            //{
-            //    target = null;
-            //    Debug.Log("Player out of range");
-            //    canSeePlayer = false;
-            //    ChangeState(new ZombieIdleState());
-            //}
+           
             Debug.Log($"Exited: {other.gameObject.name}, Layer: {LayerMask.LayerToName(other.gameObject.layer)}");
             StartCoroutine(CheckForPlayersAfterDelay());
 

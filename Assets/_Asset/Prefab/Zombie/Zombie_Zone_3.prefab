@@ -775,8 +775,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6681522148576490197}
   - component: {fileID: 883735241970432498}
+  - component: {fileID: 3771666891053214706}
   m_Layer: 0
-  m_Name: Attacked_Trigger
+  m_Name: Dead_By_Fence_Electro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,6 +821,20 @@ CapsuleCollider:
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!114 &3771666891053214706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747252209408497313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9d3e3d3f9ce2b4c939113122f3fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 652368319138644592}
+  isDeadElectro: 0
 --- !u!1 &755553758295085302
 GameObject:
   m_ObjectHideFlags: 0
@@ -13561,6 +13576,7 @@ MonoBehaviour:
   zombie: {fileID: 746617444906468996}
   dropItem: {fileID: 13981668088687418}
   zomManager: {fileID: 4916996409462224630}
+  zombieCollideFence: {fileID: 0}
   isDead: 0
 --- !u!1 &2587852513348503535
 GameObject:

@@ -42,9 +42,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1537267648412045625}
   - component: {fileID: 822866472153081096}
+  - component: {fileID: 3111795955993096615}
   m_Layer: 0
-  m_Name: Attacked_Trigger
-  m_TagString: Enemy
+  m_Name: Zombie_Die_Electro
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +87,21 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.2
   m_Direction: 1
-  m_Center: {x: 0, y: 1.1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: -1.1}
+--- !u!114 &3111795955993096615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135328004196824370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9d3e3d3f9ce2b4c939113122f3fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 4781003696305074862}
+  isDeadElectro: 0
 --- !u!1 &213422368427721514
 GameObject:
   m_ObjectHideFlags: 0
@@ -38155,6 +38170,7 @@ MonoBehaviour:
   zombie: {fileID: 2870781014954080690}
   dropItem: {fileID: 2742300449319767997}
   zomManager: {fileID: 7280728744079271406}
+  zombieCollideFence: {fileID: 3111795955993096615}
   isDead: 0
 --- !u!1 &8022701526286458318
 GameObject:

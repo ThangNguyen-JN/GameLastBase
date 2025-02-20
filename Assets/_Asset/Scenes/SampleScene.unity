@@ -288,9 +288,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10722414}
+  - component: {fileID: 10722416}
+  - component: {fileID: 10722415}
   m_Layer: 0
   m_Name: Barrier_9
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +313,40 @@ Transform:
   - {fileID: 309465481}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &10722415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10722413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 309465480}
+--- !u!65 &10722416
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10722413}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.03, y: 1, z: 2.5}
+  m_Center: {x: 4.75, y: 0, z: -1.5}
 --- !u!1 &15788118
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +855,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.935421, y: 3.1094532, z: 38.33956}
   m_Center: {x: 1.9677105, y: 1.0547266, z: 0.987545}
+--- !u!1 &48801159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48801160}
+  - component: {fileID: 48801162}
+  - component: {fileID: 48801161}
+  m_Layer: 0
+  m_Name: Worker_Trigger
+  m_TagString: Worker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48801160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48801159}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8822311530728209158}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &48801161
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48801159}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &48801162
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48801159}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &50206094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1135,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1328718880}
   damageTurretGun: {fileID: 2091636000}
   targetManager: {fileID: 802399570}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1945673322}
   parentBullet: {fileID: 254516220}
 --- !u!1 &56307295
@@ -3118,7 +3237,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1825036523}
   damageTurretGun: {fileID: 1457571919}
   targetManager: {fileID: 387366764}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 2009031985}
   parentBullet: {fileID: 301647606}
 --- !u!1 &122529660
@@ -4323,9 +4442,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183401516}
+  - component: {fileID: 183401518}
+  - component: {fileID: 183401517}
   m_Layer: 0
   m_Name: Barrier_15
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4346,6 +4467,40 @@ Transform:
   - {fileID: 118367883}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &183401517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183401515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 118367882}
+--- !u!65 &183401518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183401515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 1, z: 1.8}
+  m_Center: {x: 3.5, y: 0, z: 1.6}
 --- !u!1 &188224581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,9 +4563,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 188557103}
+  - component: {fileID: 188557105}
+  - component: {fileID: 188557104}
   m_Layer: 0
   m_Name: Barrier_16
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4431,6 +4588,40 @@ Transform:
   - {fileID: 1281309102}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &188557104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188557102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1281309101}
+--- !u!65 &188557105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188557102}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 1.8}
+  m_Center: {x: 0.64, y: 0, z: 1.6}
 --- !u!1 &189638151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4440,9 +4631,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189638152}
+  - component: {fileID: 189638154}
+  - component: {fileID: 189638153}
   m_Layer: 0
   m_Name: Barrier_18
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4463,6 +4656,40 @@ Transform:
   - {fileID: 1879378257}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &189638153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189638151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1879378256}
+--- !u!65 &189638154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189638151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 1, z: 1.8}
+  m_Center: {x: 9.88, y: 0, z: 1.6}
 --- !u!1 &196158883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5761,9 +5988,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236842103}
+  - component: {fileID: 236842105}
+  - component: {fileID: 236842104}
   m_Layer: 0
   m_Name: Barrier_13
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5784,6 +6013,40 @@ Transform:
   - {fileID: 449446809}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &236842104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236842102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 449446808}
+--- !u!65 &236842105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236842102}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1, z: 2.3}
+  m_Center: {x: -0.1, y: 0, z: 1.6}
 --- !u!1001 &237888256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7286,9 +7549,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273541766}
+  - component: {fileID: 273541768}
+  - component: {fileID: 273541767}
   m_Layer: 0
   m_Name: Barrier_8
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7309,6 +7574,40 @@ Transform:
   - {fileID: 112628895}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &273541767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273541765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 112628894}
+--- !u!65 &273541768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273541765}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 1, z: 1.5}
+  m_Center: {x: 3.32, y: 0, z: -0.95}
 --- !u!1 &276784582
 GameObject:
   m_ObjectHideFlags: 0
@@ -11178,7 +11477,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 2056344331}
   damageTurretGun: {fileID: 460380617}
   targetManager: {fileID: 802399570}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 971426303}
   parentBullet: {fileID: 407251693}
 --- !u!1 &452535222
@@ -11284,7 +11583,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 942332527}
   damageTurretGun: {fileID: 387014968}
   targetManager: {fileID: 1957688214}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 572994060}
   parentBullet: {fileID: 841605986}
 --- !u!1 &460380615
@@ -15662,9 +15961,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633267106}
+  - component: {fileID: 633267108}
+  - component: {fileID: 633267107}
   m_Layer: 0
   m_Name: Barrier_6
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15685,6 +15986,40 @@ Transform:
   - {fileID: 345300913}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &633267107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633267105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 345300912}
+--- !u!65 &633267108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633267105}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.2, y: 1, z: 1.5}
+  m_Center: {x: 3.89, y: 0, z: -0.95}
 --- !u!1 &635186272
 GameObject:
   m_ObjectHideFlags: 0
@@ -15971,7 +16306,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1252844033}
   damageTurretGun: {fileID: 415720199}
   targetManager: {fileID: 1957688214}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1434683478}
   parentBullet: {fileID: 1461933564}
 --- !u!1 &659387188
@@ -16316,9 +16651,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 677320124}
+  - component: {fileID: 677320125}
+  - component: {fileID: 677320127}
+  - component: {fileID: 677320126}
   m_Layer: 0
   m_Name: Barrier_1
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16339,6 +16677,61 @@ Transform:
   - {fileID: 1099894077}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &677320125
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677320123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04cf0df271036144d9aeb36d605e7330, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &677320126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677320123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1099894076}
+--- !u!65 &677320127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677320123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.148614, y: 1, z: 2.7}
+  m_Center: {x: 3.7600942, y: 0, z: 0}
 --- !u!1 &677369527
 GameObject:
   m_ObjectHideFlags: 0
@@ -17225,9 +17618,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 717541229}
+  - component: {fileID: 717541231}
+  - component: {fileID: 717541230}
   m_Layer: 0
   m_Name: Barrier_17
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17248,6 +17643,40 @@ Transform:
   - {fileID: 943894895}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &717541230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717541228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 943894894}
+--- !u!65 &717541231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717541228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 1, z: 1.8}
+  m_Center: {x: 1.92, y: 0, z: 1.6}
 --- !u!1 &718126892
 GameObject:
   m_ObjectHideFlags: 0
@@ -17296,7 +17725,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1494451464}
   damageTurretGun: {fileID: 529470587}
   targetManager: {fileID: 802399570}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1865628794}
   parentBullet: {fileID: 598363720}
 --- !u!1 &718634092
@@ -17883,7 +18312,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 4203931429130893665}
   damageHandler: {fileID: 4203931429130893666}
   targetManager: {fileID: 4297863499286069274}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 6098b622d60fc6047be734ba1cf26722, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 1beafcac9a1d33449a799e068a998be9, type: 3}
   firePoint: {fileID: 1293979894}
 --- !u!1 &737431010
 GameObject:
@@ -18106,9 +18535,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 740118304}
+  - component: {fileID: 740118306}
+  - component: {fileID: 740118305}
   m_Layer: 0
   m_Name: Barrier_12
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18129,6 +18560,40 @@ Transform:
   - {fileID: 209994466}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &740118305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740118303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 209994465}
+--- !u!65 &740118306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740118303}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1, z: 1.8}
+  m_Center: {x: 4.27, y: 0.2, z: -0.76}
 --- !u!1 &740638513
 GameObject:
   m_ObjectHideFlags: 0
@@ -18995,7 +19460,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 499151046}
   damageTurretGun: {fileID: 2076067533}
   targetManager: {fileID: 1957688214}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1497632353}
   parentBullet: {fileID: 669117463}
 --- !u!1 &795127342
@@ -19218,9 +19683,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 800456459}
+  - component: {fileID: 800456461}
+  - component: {fileID: 800456460}
   m_Layer: 0
   m_Name: Barrier_3
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19241,6 +19708,40 @@ Transform:
   - {fileID: 1473084065}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800456460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800456458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1473084064}
+--- !u!65 &800456461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800456458}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 1, z: 2.5}
+  m_Center: {x: 0.62, y: 0, z: 0}
 --- !u!1 &800777155
 GameObject:
   m_ObjectHideFlags: 0
@@ -20921,7 +21422,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 36150812}
   damageTurretGun: {fileID: 1209143806}
   targetManager: {fileID: 802399570}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 281515148}
   parentBullet: {fileID: 885782892}
 --- !u!1 &891960257
@@ -21049,9 +21550,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904448675}
+  - component: {fileID: 904448677}
+  - component: {fileID: 904448676}
   m_Layer: 0
   m_Name: Barrier_2
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21072,6 +21575,40 @@ Transform:
   - {fileID: 1582706259}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904448676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904448674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1582706258}
+--- !u!65 &904448677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904448674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 1, z: 2.5}
+  m_Center: {x: 2.19, y: 0, z: 0}
 --- !u!1 &913839938
 GameObject:
   m_ObjectHideFlags: 0
@@ -25102,7 +25639,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 527677654}
   damageTurretGun: {fileID: 1746394751}
   targetManager: {fileID: 387366764}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1113662187}
   parentBullet: {fileID: 529754121}
 --- !u!1 &1093395859
@@ -28412,7 +28949,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1989141254}
   damageTurretGun: {fileID: 2090554073}
   targetManager: {fileID: 387366764}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 258334219}
   parentBullet: {fileID: 452022459}
 --- !u!1 &1250654437
@@ -29762,7 +30299,7 @@ Transform:
   m_GameObject: {fileID: 1293979893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.051, y: 0.355, z: -1.069}
+  m_LocalPosition: {x: -0.016, y: 0.308, z: -1.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30828,7 +31365,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 93927048}
   damageTurretGun: {fileID: 2015968275}
   targetManager: {fileID: 1957688214}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 313642472}
   parentBullet: {fileID: 1938905774}
 --- !u!64 &1347677984
@@ -33073,7 +33610,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1794552090}
   damageTurretGun: {fileID: 481242003}
   targetManager: {fileID: 387366764}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1364123815}
   parentBullet: {fileID: 1046488786}
 --- !u!64 &1481892313
@@ -33589,7 +34126,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1948558535}
   damageTurretGun: {fileID: 1107224968}
   targetManager: {fileID: 387366764}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1343685229}
   parentBullet: {fileID: 1715373752}
 --- !u!1 &1494451462
@@ -35230,9 +35767,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562744569}
+  - component: {fileID: 1562744571}
+  - component: {fileID: 1562744570}
   m_Layer: 0
   m_Name: Barrier_4
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35253,6 +35792,40 @@ Transform:
   - {fileID: 922519843}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1562744570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562744568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 922519842}
+--- !u!65 &1562744571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562744568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 1, z: 2.5}
+  m_Center: {x: -0.8, y: 0, z: 0}
 --- !u!1 &1576018650
 GameObject:
   m_ObjectHideFlags: 0
@@ -36706,7 +37279,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1048421053}
   damageTurretGun: {fileID: 471804612}
   targetManager: {fileID: 802399570}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 379665033}
   parentBullet: {fileID: 785705829}
 --- !u!64 &1628589103
@@ -37104,9 +37677,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1640823805}
+  - component: {fileID: 1640823807}
+  - component: {fileID: 1640823806}
   m_Layer: 0
   m_Name: Barrier_10
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37127,6 +37702,40 @@ Transform:
   - {fileID: 556877245}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1640823806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640823804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 556877244}
+--- !u!65 &1640823807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640823804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6, y: 1, z: 2.5}
+  m_Center: {x: 1.35, y: 0, z: -1.5}
 --- !u!1 &1648711159
 GameObject:
   m_ObjectHideFlags: 0
@@ -37295,9 +37904,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664886001}
+  - component: {fileID: 1664886003}
+  - component: {fileID: 1664886002}
   m_Layer: 0
   m_Name: Barrier_14
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37318,6 +37929,40 @@ Transform:
   - {fileID: 1753759248}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664886002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664886000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1753759247}
+--- !u!65 &1664886003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664886000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 1, z: 2.3}
+  m_Center: {x: -0.9, y: 0, z: 1.6}
 --- !u!1 &1679100692
 GameObject:
   m_ObjectHideFlags: 0
@@ -37479,9 +38124,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687014906}
+  - component: {fileID: 1687014908}
+  - component: {fileID: 1687014907}
   m_Layer: 0
   m_Name: Barrier_5
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37502,6 +38149,40 @@ Transform:
   - {fileID: 1585125455}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1687014907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687014905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1585125454}
+--- !u!65 &1687014908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687014905}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.02, y: 1, z: 1.5}
+  m_Center: {x: 4.04, y: 0, z: -0.95}
 --- !u!1 &1689819363
 GameObject:
   m_ObjectHideFlags: 0
@@ -38502,6 +39183,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5361252, y: 1.2524904, z: 4.817863}
   m_Center: {x: 0.18559721, y: 0.1262452, z: -0.26240325}
+--- !u!1 &1725614683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725614684}
+  - component: {fileID: 1725614686}
+  - component: {fileID: 1725614685}
+  m_Layer: 6
+  m_Name: Trigger_Player_Fence
+  m_TagString: PlayerFence
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1725614684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725614683}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4204065709746802005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1725614685
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725614683}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1725614686
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725614683}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1733573301
 GameObject:
   m_ObjectHideFlags: 0
@@ -38617,9 +39381,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1737661415}
+  - component: {fileID: 1737661417}
+  - component: {fileID: 1737661416}
   m_Layer: 0
   m_Name: Barrier_11
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38640,6 +39406,40 @@ Transform:
   - {fileID: 1292003511}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1737661416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737661414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 1292003510}
+--- !u!65 &1737661417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737661414}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 1, z: 2.5}
+  m_Center: {x: 1.05, y: 0, z: -1.5}
 --- !u!1 &1740998808
 GameObject:
   m_ObjectHideFlags: 0
@@ -40306,9 +41106,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1802635674}
+  - component: {fileID: 1802635676}
+  - component: {fileID: 1802635675}
   m_Layer: 0
   m_Name: Barrier_7
-  m_TagString: Untagged
+  m_TagString: FenceLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40329,6 +41131,40 @@ Transform:
   - {fileID: 202460182}
   m_Father: {fileID: 219759290}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1802635675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802635673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27ade8a8ec2b3a408ac8806bf0bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fenceLaser: {fileID: 202460181}
+--- !u!65 &1802635676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802635673}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8, y: 1, z: 1.5}
+  m_Center: {x: 3.85, y: 0, z: -0.95}
 --- !u!1 &1803121920
 GameObject:
   m_ObjectHideFlags: 0
@@ -45136,7 +45972,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 554986781}
   damageTurretGun: {fileID: 1344387521}
   targetManager: {fileID: 1957688214}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 1959319908}
   parentBullet: {fileID: 435030908}
 --- !u!1 &1991853217
@@ -50052,7 +50888,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 9034676524896485071}
   damageTurretGun: {fileID: 5089581810327023635}
   targetManager: {fileID: 1290884394}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 322614606463728790}
   parentBullet: {fileID: 7594816985421131479}
 --- !u!82 &82435455518083423
@@ -64252,7 +65088,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 7803034673368755554}
   damageTurretGun: {fileID: 7462110211805205820}
   targetManager: {fileID: 1290884394}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 8187871013874755048}
   parentBullet: {fileID: 1473121205251168063}
 --- !u!1 &400211800727309829
@@ -68742,6 +69578,7 @@ Transform:
   - {fileID: 4203736903012708681}
   - {fileID: 961393001}
   - {fileID: 1853426485}
+  - {fileID: 1725614684}
   - {fileID: 809698095}
   - {fileID: 33034497}
   m_Father: {fileID: 0}
@@ -70880,7 +71717,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 4280875580811774948}
   damageTurretGun: {fileID: 1684488502716810991}
   targetManager: {fileID: 1290884394}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 2986662723271632501}
   parentBullet: {fileID: 1414672527807408151}
 --- !u!4 &5927655337759340266
@@ -72036,7 +72873,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 1346256863591177236}
   damageTurretGun: {fileID: 6392811632190568722}
   targetManager: {fileID: 1290884394}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 4370661864349477489}
   parentBullet: {fileID: 5781866712739874062}
 --- !u!1 &7767197752661722456
@@ -72231,7 +73068,7 @@ MonoBehaviour:
   fireRateHandler: {fileID: 4445059155195005086}
   damageTurretGun: {fileID: 8070520396018468495}
   targetManager: {fileID: 1290884394}
-  bulletPrefab: {fileID: 6021356493114066031, guid: 1a656465c601ccb4aa805ca7b824278d, type: 3}
+  bulletPrefab: {fileID: 1599195807262901, guid: 80ee681f2ab78f94481a3b453dd01f04, type: 3}
   firePoint: {fileID: 4622227125467597737}
   parentBullet: {fileID: 2376334614973436205}
 --- !u!4 &8017232316412563109
@@ -72850,6 +73687,7 @@ Transform:
   - {fileID: 103944367}
   - {fileID: 622497629}
   - {fileID: 1632237318}
+  - {fileID: 48801160}
   m_Father: {fileID: 1482639376}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: -0}
 --- !u!195 &8822311530728209159

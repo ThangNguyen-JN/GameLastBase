@@ -10,6 +10,7 @@ public class HealthZombie : HealthManager
     public DropItem dropItem;
 
     public ZomManager zomManager;
+    public ZombieCollideFence zombieCollideFence;
 
     public bool isDead = false;
     private void Start()
@@ -42,9 +43,17 @@ public class HealthZombie : HealthManager
         }
 
         // chuyen sang trang trai die
+
         if (zomManager != null)
         {
-            zomManager.ChangeState(new ZombieDieState());
+            if (zombieCollideFence.isDeadElectro == true)
+            {
+                zomManager.ChangeState(new ZombieDieFenceState());
+            }
+            else
+            {
+                zomManager.ChangeState(new ZombieDieState());
+            }
         }
     }
 

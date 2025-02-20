@@ -16,6 +16,9 @@ TagManager:
   - WorkerWood
   - PlayerUpgrade
   - PlayerChasing
+  - PlayerFence
+  - Worker
+  - FenceLaser
   layers:
   - Default
   - TransparentFX
