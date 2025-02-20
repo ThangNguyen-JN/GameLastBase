@@ -8,10 +8,14 @@ public class TurretUpgradeLevel
 {
     public string levelTurret;
     public List<ResourceUpgradeTurret> requiredResources;
-    //public int damageIncrease;
-
 }
 
+[Serializable]
+public class TurretUpgradeSaveData
+{
+    public string turretLevel;
+    public List<ResourceUpgradeSaveData> requiredResources;
+}
 
 [Serializable]
 public class ResourceUpgradeTurret
@@ -20,3 +24,12 @@ public class ResourceUpgradeTurret
     public Sprite imageResource;
     public int quantilyResource;
 }
+
+[System.Serializable]
+public class ResourceUpgradeSaveData
+{
+    public string nameResource;
+    public int quantilyResource;
+}
+
+

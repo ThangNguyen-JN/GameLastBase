@@ -100,26 +100,57 @@ public class ResourceDatabase : ScriptableObject
         OnResourceChanged?.Invoke(resource); //kich hoat su kien voi tai nguyen cu the
     }
 
-    
+    [ContextMenu("Save Resource")]
+    public void SaveResource()
+    {
+        ResourceSaveWrapper saveData = new ResourceSaveWrapper();
+
+        foreach (var resource in resources)
+        {
+            saveData.resources.Add(new ResourceSaveData
+            {
+                resourceName = resource.resourceName,
+                amount = resource.amount,
+                maxAmount = resource.maxAmount,
+                unlock = resource.unlock
+            });
+        }
+
+        string json = JsonUtility.ToJson(saveData, true);
+        PlayerPrefs.SetString("ResourceDatabase", json);
+        PlayerPrefs.Save();
+        Debug.Log("Saved JSON: " + json);
+    }
+
+    [ContextMenu("Load Resource")]
+    public void LoadResource()
+    {
+        string json = PlayerPrefs.GetString("ResourceDatabase", "{}");
+        ResourceSaveWrapper saveData = JsonUtility.FromJson<ResourceSaveWrapper>(json);
+        if (saveData == null || saveData.resources == null) return;
+
+        foreach (var data in saveData.resources)
+        {
+            Resource resource = GetResource(data.resourceName);
+            if (resource != null)
+            {
+                resource.amount = data.amount;
+                resource.maxAmount = data.maxAmount;
+                resource.unlock = data.unlock;
+            }
+        }
+        Debug.Log("Loaded JSON: " + json);
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveResource();
+    }    
 }
 
-//[ContextMenu("Save Resource")]
-//public void SaveResource()
-//{
-//    ResourceSaveData saveData = new ResourceSaveData();
-//    saveData.resources = this.resources;
-//    string json = JsonUtility.ToJson(saveData, true);
-//    PlayerPrefs.SetString("ResourceDatabase", json);
-//    PlayerPrefs.Save();
-//}
 
-//public void LoadResource()
-//{
-//    string json = PlayerPrefs.GetString("ResourceDatabase", "{}");
-//    ResourceSaveData saveData = JsonUtility.FromJson<ResourceSaveData>(json);
-//    this.resources = saveData.resources;
-//    JsonUtility.FromJsonOverwrite(json, this);
-//}
+
+
 
 
 

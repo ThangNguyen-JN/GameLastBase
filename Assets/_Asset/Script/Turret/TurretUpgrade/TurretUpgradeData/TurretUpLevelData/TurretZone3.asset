@@ -15,18 +15,18 @@ MonoBehaviour:
   turretUpLevel:
   - levelTurret: Turret 1
     requiredResources:
-    - nameResource: ItemScrap
+    - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 2
+      quantilyResource: 0
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 2
+      quantilyResource: 0
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-      quantilyResource: 2
+      quantilyResource: 0
   - levelTurret: Turret 2
     requiredResources:
-    - nameResource: ItemScrap
+    - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
       quantilyResource: 3
     - nameResource: ItemFuel
@@ -37,7 +37,7 @@ MonoBehaviour:
       quantilyResource: 3
   - levelTurret: Turret 3
     requiredResources:
-    - nameResource: ItemScrap
+    - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
       quantilyResource: 4
     - nameResource: ItemFuel
@@ -48,7 +48,7 @@ MonoBehaviour:
       quantilyResource: 4
   - levelTurret: Turret 4
     requiredResources:
-    - nameResource: ItemScrap
+    - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
       quantilyResource: 5
     - nameResource: ItemFuel

@@ -9,7 +9,7 @@ public class StorageUpgradeUI : MonoBehaviour
     public Transform resourceListContainer;
     public GameObject resourceItemPrefab;
 
-    public void Awake()
+    public void Start()
     {
         UpdateUIStorage();
     }
@@ -39,7 +39,7 @@ public class StorageUpgradeUI : MonoBehaviour
             Text quantityText = resourceItem.transform.Find("ResourceText").GetComponent<Text>();
 
             // Cap nhat du lieu
-            iconImage.sprite = resource.imgaeResource;
+            iconImage.sprite = resource.imageResource;
             quantityText.text = resource.quantityResource.ToString();
         }
 

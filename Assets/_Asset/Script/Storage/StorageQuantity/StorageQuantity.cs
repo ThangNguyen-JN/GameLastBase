@@ -19,14 +19,7 @@ public class StorageQuantity : MonoBehaviour
             ChangedCurrentResourceStorage?.Invoke(CurrentResource, maxResource);
         }
     }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AddResource(1);
-        }
-    }
-
+   
     public void AddResource(int amount)
     {
         CurrentResource += amount;

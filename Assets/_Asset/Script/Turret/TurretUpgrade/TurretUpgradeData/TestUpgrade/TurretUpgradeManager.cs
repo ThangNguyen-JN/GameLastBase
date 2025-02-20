@@ -96,21 +96,22 @@ public class TurretUpgradeManager : MonoBehaviour
     {
         if (currentLevel >= turretDatabase.turretUpLevel.Count) return;
 
+        List<ResourceUpgradeSaveData> saveResources = new List<ResourceUpgradeSaveData>();
+        foreach (var resource in turretDatabase.turretUpLevel[currentLevel].requiredResources)
+        {
+            saveResources.Add(new ResourceUpgradeSaveData { nameResource = resource.nameResource, quantilyResource = resource.quantilyResource });
+        }
+
         TurretUpgradeSaveData saveData = new TurretUpgradeSaveData
         {
             turretLevel = turretDatabase.turretUpLevel[currentLevel].levelTurret,
-            requiredResources = turretDatabase.turretUpLevel[currentLevel].requiredResources
+            requiredResources = saveResources
         };
 
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(savePath, json);
-
-        // Test
         PlayerPrefs.SetString(saveKey, json);
         PlayerPrefs.Save();
-        //PlayerPrefs.SetString("TurretUpgradeZone1", json);
-        //PlayerPrefs.Save();
-        Debug.Log($"Saved turret data at {savePath}");
     }
 
     public void LoadTurretData()
@@ -126,26 +127,16 @@ public class TurretUpgradeManager : MonoBehaviour
             json = PlayerPrefs.GetString(saveKey);
             Debug.Log($"Loaded turret data from PlayerPrefs for {zoneID}");
         }
-        //else if (PlayerPrefs.HasKey("TurretUpgradeZone1"))
-        //{
-        //    json = PlayerPrefs.GetString("TurretUpgradeZone1");
-        //    Debug.Log("Loaded turret data from PlayerPrefs.");
-        //}
-       
 
         if (!string.IsNullOrEmpty(json))
         {
             TurretUpgradeSaveData loadedData = JsonUtility.FromJson<TurretUpgradeSaveData>(json);
-
             int loadedLevel = turretDatabase.turretUpLevel.FindIndex(level => level.levelTurret == loadedData.turretLevel);
             if (loadedLevel < 0) loadedLevel = 0;
 
             currentLevel = loadedLevel;
-            turretDatabase.turretUpLevel[currentLevel].requiredResources = loadedData.requiredResources;
+            Debug.Log($"Loaded turret level {currentLevel}");
 
-            Debug.Log($"Loaded turret level {currentLevel} with saved resources.");
-
-            // Bật đúng turret khi load
             for (int i = 0; i < turretsInScene.Count; i++)
             {
                 turretsInScene[i].SetActive(i == currentLevel);
@@ -155,9 +146,7 @@ public class TurretUpgradeManager : MonoBehaviour
             {
                 uiTurretUpgrade.UpdateUI();
             }
-            
         }
-        
     }
 
     public void OnApplicationQuit()
@@ -165,45 +154,4 @@ public class TurretUpgradeManager : MonoBehaviour
         SaveTurretData();
     }
 
-    [System.Serializable]
-    public class TurretUpgradeSaveData
-    {
-        public string turretLevel;
-        public List<ResourceUpgradeTurret> requiredResources;
-    }
-
-    [ContextMenu("Reset Turret Data")]
-    public void ResetTurretData()
-    {
-        if (File.Exists(savePath))
-        {
-            File.Delete(savePath);
-            Debug.Log($"Deleted save file: {savePath}");
-        }
-
-        if (PlayerPrefs.HasKey(saveKey))
-        {
-            PlayerPrefs.DeleteKey(saveKey);
-            PlayerPrefs.Save();
-            Debug.Log($"Deleted PlayerPrefs key: {saveKey}");
-        }
-
-        // Đặt lại level về mặc định
-        currentLevel = 0;
-        for (int i = 0; i < turretsInScene.Count; i++)
-        {
-            turretsInScene[i].SetActive(i == currentLevel);
-        }
-
-        if (uiTurretUpgrade != null)
-        {
-            uiTurretUpgrade.UpdateUI();
-        }
-
-        Debug.Log($"Reset turret data for {zoneID}");
-    }
 }
-
-
-
-

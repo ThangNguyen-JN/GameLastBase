@@ -16,32 +16,32 @@ MonoBehaviour:
   - levelStorage: Level 1
     resourceUpgradeStorages:
     - nameResource: ItemWood
-      imgaeResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 2
     - nameResource: ItemStone
-      imgaeResource: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 2
   - levelStorage: Level 2
     resourceUpgradeStorages:
     - nameResource: ItemWood
-      imgaeResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 3
     - nameResource: ItemStone
-      imgaeResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+      imageResource: {fileID: 0}
       quantityResource: 3
   - levelStorage: Level 3
     resourceUpgradeStorages:
     - nameResource: ItemWood
-      imgaeResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 4
     - nameResource: ItemStone
-      imgaeResource: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 4
   - levelStorage: Level 4
     resourceUpgradeStorages:
     - nameResource: ItemWood
-      imgaeResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
+      imageResource: {fileID: 0}
       quantityResource: 5
     - nameResource: ItemStone
-      imgaeResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
+      imageResource: {fileID: 0}
       quantityResource: 5

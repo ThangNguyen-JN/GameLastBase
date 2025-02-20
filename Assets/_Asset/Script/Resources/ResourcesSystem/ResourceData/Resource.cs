@@ -33,5 +33,14 @@ public class Resource
 [Serializable]
 public class ResourceSaveData
 {
-    public List<Resource> resources =  new List<Resource>();
+    public string resourceName;
+    public int amount;
+    public int maxAmount;
+    public bool unlock;
+}
+
+[Serializable]
+public class ResourceSaveWrapper
+{
+    public List<ResourceSaveData> resources = new List<ResourceSaveData>();
 }

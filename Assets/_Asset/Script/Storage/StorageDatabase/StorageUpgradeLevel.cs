@@ -14,6 +14,23 @@ public class StorageUpgradeLevel
 public class ResourceUpgradeStorage
 {
     public string nameResource;
-    public Sprite imgaeResource;
+    public Sprite imageResource;
     public int quantityResource;
 }
+
+[Serializable]
+public class ResourceUpgradeStorageSaveData
+{
+    public string nameResource;
+    public int quantityResource;
+}
+
+[System.Serializable]
+public class StorageUpgradeSaveData
+{
+    public string storageLevel;
+    public List<ResourceUpgradeStorageSaveData> resourceUpgradeStorages;
+    public int currentResource;
+    public int maxResource;
+}
+
