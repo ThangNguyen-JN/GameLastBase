@@ -20,12 +20,12 @@ MonoBehaviour:
     unlock: 1
   - resourceName: ItemWood
     icon: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-    amount: 14
+    amount: 20
     maxAmount: 20
     unlock: 1
   - resourceName: ItemStone
     icon: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
-    amount: 11
+    amount: 15
     maxAmount: 20
     unlock: 1
   - resourceName: ItemIron

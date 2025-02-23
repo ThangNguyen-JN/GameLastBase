@@ -15,8 +15,15 @@ public class StorageUpgradeManage : MonoBehaviour
     public string storageID;
     private string saveKey;
 
+
+    public static StorageUpgradeManage Instance { get; private set; }
     public void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+      
         Debug.Log("📢 Awake() called for " + gameObject.name);
 
         if (string.IsNullOrEmpty(storageID))
@@ -27,7 +34,6 @@ public class StorageUpgradeManage : MonoBehaviour
 
         saveKey = "StorageUpgrade_" + storageID;
         savePath = Application.persistentDataPath + "/storage_" + storageID + "_save.json";
-        Debug.Log("📂 Save path initialized: " + savePath);
         LoadStorageData();
     }
 
@@ -80,7 +86,6 @@ public class StorageUpgradeManage : MonoBehaviour
     {
         if (string.IsNullOrEmpty(savePath))
         {
-            Debug.LogError("❌ savePath is empty! Cannot save data.");
             return;
         }
 
@@ -139,7 +144,7 @@ public class StorageUpgradeManage : MonoBehaviour
                 {
                     nameResource = resource.nameResource,
                     quantityResource = resource.quantityResource,
-                    imageResource = null // Không lưu Sprite
+                    //imageResource = null // Không lưu Sprite
                 });
             }
 

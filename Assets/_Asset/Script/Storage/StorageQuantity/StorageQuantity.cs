@@ -35,8 +35,9 @@ public class StorageQuantity : MonoBehaviour
         maxResource += amount;
         ChangedCurrentResourceStorage?.Invoke(CurrentResource, maxResource);
     }
-}
 
+   
+}
 
 
 

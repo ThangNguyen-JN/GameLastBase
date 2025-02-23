@@ -19,6 +19,7 @@ TagManager:
   - PlayerFence
   - Worker
   - FenceLaser
+  - PlayerTakeResource
   layers:
   - Default
   - TransparentFX

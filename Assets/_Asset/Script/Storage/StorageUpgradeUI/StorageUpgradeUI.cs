@@ -42,7 +42,5 @@ public class StorageUpgradeUI : MonoBehaviour
             iconImage.sprite = resource.imageResource;
             quantityText.text = resource.quantityResource.ToString();
         }
-
-
     }
 }

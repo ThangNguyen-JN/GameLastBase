@@ -31,6 +31,7 @@ public class WorkerPutItemStorageState : IWorkerState
             worker.quantityResource.MinusResourceWorker(1);
             worker.storageQuantity.AddResource(1);
             tries++;
+            StorageUpgradeManage.Instance.SaveStorageData();
         }
 
         worker.ChangeState(new WorkerIdleState());

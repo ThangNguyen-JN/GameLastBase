@@ -46,7 +46,8 @@ public class HealthZombie : HealthManager
 
         if (zomManager != null)
         {
-            if (zombieCollideFence.isDeadElectro == true)
+            //zomManager.ChangeState(new ZombieDieState());
+            if (zombieCollideFence != null && zombieCollideFence.isDeadElectro == true)
             {
                 zomManager.ChangeState(new ZombieDieFenceState());
             }

@@ -15,6 +15,7 @@ public class TurretUpgradeSaveData
 {
     public string turretLevel;
     public List<ResourceUpgradeSaveData> requiredResources;
+    public float areaRadius;
 }
 
 [Serializable]

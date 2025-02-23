@@ -105,7 +105,8 @@ public class TurretUpgradeManager : MonoBehaviour
         TurretUpgradeSaveData saveData = new TurretUpgradeSaveData
         {
             turretLevel = turretDatabase.turretUpLevel[currentLevel].levelTurret,
-            requiredResources = saveResources
+            requiredResources = saveResources,
+            areaRadius = areaDetectTrigger.radius
         };
 
         string json = JsonUtility.ToJson(saveData, true);
@@ -135,7 +136,7 @@ public class TurretUpgradeManager : MonoBehaviour
             if (loadedLevel < 0) loadedLevel = 0;
 
             currentLevel = loadedLevel;
-            Debug.Log($"Loaded turret level {currentLevel}");
+            areaDetectTrigger.radius = loadedData.areaRadius;
 
             for (int i = 0; i < turretsInScene.Count; i++)
             {
@@ -154,4 +155,31 @@ public class TurretUpgradeManager : MonoBehaviour
         SaveTurretData();
     }
 
+    [ContextMenu("ResetTurretData")]
+    public void ResetTurretData()
+    {
+        currentLevel = 0;
+
+        // Đặt lại bán kính phát hiện về mặc định
+        areaDetectTrigger.radius = 10f; // Cần khai báo defaultRadius từ trước
+
+        // Đặt lại tất cả turret trong scene, chỉ bật turret cấp 0
+        for (int i = 0; i < turretsInScene.Count; i++)
+        {
+            turretsInScene[i].SetActive(i == currentLevel);
+        }
+
+        // Ghi lại dữ liệu reset vào file & PlayerPrefs
+        SaveTurretData();
+
+        // Cập nhật lại UI nếu có
+        if (uiTurretUpgrade != null)
+        {
+            uiTurretUpgrade.UpdateUI();
+        }
+
+        Debug.Log("Turret data has been reset to default values!");
+    }
 }
+
+
