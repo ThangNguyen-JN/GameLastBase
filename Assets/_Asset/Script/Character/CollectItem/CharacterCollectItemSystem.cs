@@ -27,6 +27,37 @@ public class CharacterCollectItemSystem : MonoBehaviour
         {
             CollectItem(other.gameObject, "ItemWood");
         }
+        
+        if (other.CompareTag("ItemStone"))
+        {
+            CollectItem(other.gameObject, "ItemStone");
+        }
+
+        if (other.CompareTag("ItemIron"))
+        {
+            CollectItem(other.gameObject, "ItemIron");
+        }
+
+        if (other.CompareTag("ItemDetail"))
+        {
+            CollectItem(other.gameObject, "ItemDetail");
+        }
+
+        if (other.CompareTag("ItemFuel"))
+        {
+            CollectItem(other.gameObject, "ItemFuel");
+        }
+
+        if (other.CompareTag("ItemRope"))
+        {
+            CollectItem(other.gameObject, "ItemRope");
+        }
+
+        if (other.CompareTag("ItemBattery"))
+        {
+            CollectItem(other.gameObject, "ItemBattery");
+        }
+        
     }
 
 

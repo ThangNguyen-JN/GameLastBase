@@ -20,6 +20,11 @@ TagManager:
   - Worker
   - FenceLaser
   - PlayerTakeResource
+  - ItemDetail
+  - ItemFuel
+  - ItemIron
+  - ItemRope
+  - ItemBattery
   layers:
   - Default
   - TransparentFX

@@ -12,19 +12,28 @@ public class ResourceSpawner : MonoBehaviour
 
     public void Start()
     {
-        SpawnAllResource();
+        StartCoroutine(SpawnAllResourcesCoroutine());
     }
 
-    public void SpawnAllResource()
+    private IEnumerator SpawnAllResourcesCoroutine()
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
             SpawnResource(spawnPoint);
+            yield return new WaitForSeconds(0.15f); 
         }
-        safeZoneChecker.CheckResourcesInZone();
+
+        if (safeZoneChecker != null)
+        {
+            safeZoneChecker.CheckResourcesInZone();
+        }
     }
     public void SpawnResource(Transform spawnPoint)
     {
+        if (resourcePrefab == null)
+        {
+            return;
+        }
         if (spawnedResources.ContainsKey(spawnPoint) && spawnedResources[spawnPoint] != null)
         {
             Destroy(spawnedResources[spawnPoint]);
