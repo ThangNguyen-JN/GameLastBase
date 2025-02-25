@@ -17,10 +17,10 @@ MonoBehaviour:
     requiredResources:
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 0
+      quantilyResource: 2
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 0
+      quantilyResource: 2
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
       quantilyResource: 0

@@ -11,9 +11,10 @@ public class TurretUpgradeManager : MonoBehaviour
     public GameObject currentTurret;
     public List<GameObject> turretsInScene;
     public UITurretUpgradeManager uiTurretUpgrade;
-    //public Transform turretSpawnPoint;
     private string savePath;
-    
+
+    private float defaultRadius = 10f;
+
     //test id Zone
     public string zoneID;
     private string saveKey;
@@ -24,14 +25,10 @@ public class TurretUpgradeManager : MonoBehaviour
         saveKey = "TurretUpgrade_" + zoneID;
         savePath = Application.persistentDataPath + "/turret_" + zoneID + "_save.json";
         LoadTurretData();
-
-        
     }
 
     public void Start()
     {
-        //savePath = Application.persistentDataPath + "/turret_save.json";
-        //LoadTurretData();
         if (string.IsNullOrEmpty(zoneID))
         {
             Debug.LogError("ZoneID is not set for " + gameObject.name);
@@ -56,7 +53,10 @@ public class TurretUpgradeManager : MonoBehaviour
         //kich hoat turret moi
         currentLevel++;
         ActivateTurret(currentLevel - 1, currentLevel);//+ 1);
-        areaDetectTrigger.radius += 1;
+        if (areaDetectTrigger != null)
+        {
+            areaDetectTrigger.radius += 1;
+        }
         SaveTurretData();
 
     }    
@@ -106,7 +106,7 @@ public class TurretUpgradeManager : MonoBehaviour
         {
             turretLevel = turretDatabase.turretUpLevel[currentLevel].levelTurret,
             requiredResources = saveResources,
-            areaRadius = areaDetectTrigger.radius
+            areaRadius = (areaDetectTrigger != null) ? areaDetectTrigger.radius : defaultRadius
         };
 
         string json = JsonUtility.ToJson(saveData, true);
@@ -136,7 +136,10 @@ public class TurretUpgradeManager : MonoBehaviour
             if (loadedLevel < 0) loadedLevel = 0;
 
             currentLevel = loadedLevel;
-            areaDetectTrigger.radius = loadedData.areaRadius;
+            if (areaDetectTrigger != null)
+            {
+                areaDetectTrigger.radius = loadedData.areaRadius;
+            }
 
             for (int i = 0; i < turretsInScene.Count; i++)
             {
@@ -161,7 +164,10 @@ public class TurretUpgradeManager : MonoBehaviour
         currentLevel = 0;
 
         // Đặt lại bán kính phát hiện về mặc định
-        areaDetectTrigger.radius = 10f; // Cần khai báo defaultRadius từ trước
+        if (areaDetectTrigger != null)
+        {
+            areaDetectTrigger.radius = defaultRadius;
+        }
 
         // Đặt lại tất cả turret trong scene, chỉ bật turret cấp 0
         for (int i = 0; i < turretsInScene.Count; i++)
@@ -181,5 +187,7 @@ public class TurretUpgradeManager : MonoBehaviour
         Debug.Log("Turret data has been reset to default values!");
     }
 }
+
+
 
 
