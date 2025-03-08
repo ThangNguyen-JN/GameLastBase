@@ -63,6 +63,16 @@ public class CharacterCollectItemSystem : MonoBehaviour
 
     private void CollectItem(GameObject item, string resourceName)
     {
+        Resource resource = ResourceDatabase.Instance.GetResource(resourceName);
+        if (resource == null)
+        {
+            return;
+        }
+        if (resource.amount >= resource.maxAmount)
+        { 
+            return;
+        }
+
         Sequence moveSequence = DOTween.Sequence();
 
         moveSequence.AppendCallback(() =>
@@ -73,8 +83,11 @@ public class CharacterCollectItemSystem : MonoBehaviour
         moveSequence.AppendInterval(moveDuration).OnComplete(() =>
         {
             changeResource.AddResource(resourceName, 1);
-            Debug.Log("Add Resource");
             //ResourceDatabase.Instance.SaveResource();
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.UpdateQuestProgress(resourceName, 1);
+            }
             Destroy(item);
         });
         //item.transform.DORotate(new Vector3(0, 0, 0), moveDuration, RotateMode.FastBeyond360);

@@ -10,6 +10,7 @@ public class StorageUpgradeManage : MonoBehaviour
     public List<GameObject> storageInScene;
     public StorageUpgradeUI storageUpgradeUI;
     public StorageQuantity storageQuantity;
+    public StorageLevelHandler storageLevelHandler;
 
     private string savePath;
     public string storageID;
@@ -50,18 +51,21 @@ public class StorageUpgradeManage : MonoBehaviour
         ActivateStorage(currentLevel - 1, currentLevel);
         storageQuantity.UpgradeMaxResource(5);
         SaveStorageData();
+        if (storageLevelHandler != null)
+        {
+            storageLevelHandler.UpdateObjectState();
+        }
     }
 
     private void ActivateStorage(int oldLevel, int newLevel)
     {
-        // Tat storage cu
-        if (oldLevel < storageInScene.Count && storageInScene[oldLevel] != null)
+        if (oldLevel >= 0 && oldLevel < storageInScene.Count && storageInScene[oldLevel] != null)
         {
             storageInScene[oldLevel].SetActive(false);
         }
 
-        // Bat storage moi
-        if (newLevel < storageInScene.Count && storageInScene[newLevel] != null)
+        // Kiểm tra newLevel hợp lệ trước khi bật storage mới
+        if (newLevel >= 0 && newLevel < storageInScene.Count && storageInScene[newLevel] != null)
         {
             storageInScene[newLevel].SetActive(true);
         }
@@ -137,16 +141,17 @@ public class StorageUpgradeManage : MonoBehaviour
             currentLevel = loadedLevel;
 
             // Chuyển đổi từ SaveData về runtime data
-            storageData.storageUpLevel[currentLevel].resourceUpgradeStorages.Clear();
+            //storageData.storageUpLevel[currentLevel].resourceUpgradeStorages.Clear();
+            List<ResourceUpgradeStorage> tempList = new List<ResourceUpgradeStorage>();
             foreach (var resource in loadedData.resourceUpgradeStorages)
             {
-                storageData.storageUpLevel[currentLevel].resourceUpgradeStorages.Add(new ResourceUpgradeStorage
+                tempList.Add(new ResourceUpgradeStorage
                 {
                     nameResource = resource.nameResource,
-                    quantityResource = resource.quantityResource,
-                    //imageResource = null // Không lưu Sprite
+                    quantityResource = resource.quantityResource
                 });
             }
+           
 
             storageQuantity.CurrentResource = loadedData.currentResource;
             storageQuantity.maxResource = loadedData.maxResource;
@@ -164,4 +169,43 @@ public class StorageUpgradeManage : MonoBehaviour
 
     }
 
+    public void OnApplicationQuit()
+    {
+        SaveStorageData();
+    }
+
+    [ContextMenu("ResetStorageLevel")]
+    public void ResetStorageLevel()
+    {
+        currentLevel = 0; // Đặt về level 0
+        
+        storageQuantity.CurrentResource = 0; // Đặt lại tài nguyên hiện tại về 0
+        storageQuantity.maxResource = 20;
+
+        foreach (var storage in storageInScene)
+        {
+            if (storage != null)
+                storage.SetActive(false);
+        }
+
+        // Bật lại storage level 0
+        if (storageInScene.Count > 0 && storageInScene[0] != null)
+        {
+            storageInScene[0].SetActive(true);
+        }
+
+        SaveStorageData(); // Lưu lại trạng thái sau khi reset
+
+        if (storageUpgradeUI != null)
+        {
+            storageUpgradeUI.UpdateUIStorage(); // Cập nhật UI
+        }
+
+        Debug.Log("Storage level has been reset to 0!");
+    }
+
 }
+
+
+
+

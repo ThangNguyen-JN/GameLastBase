@@ -58,16 +58,28 @@ public class ZombieSpawner : MonoBehaviour
 
     private Vector3 GetRandomSpawnPoint()
     {
-        Vector3 spawnPoint = spawnCenter + new Vector3(
-            Random.Range(-spawnWidth / 2, spawnWidth / 2),
-            0.2f,
-            Random.Range(-spawnHeight / 2, spawnHeight / 2)
-        );
+        Vector3 spawnPoint;
+        int maxAttempts = 10; 
+        int attempt = 0;
 
-        if (Physics.Raycast(spawnPoint, Vector3.down, out RaycastHit hit, 20f, groundLayer))
+        do
         {
-            spawnPoint.y = hit.point.y;
-        }
+            spawnPoint = spawnCenter + new Vector3(
+                Random.Range(-spawnWidth / 2, spawnWidth / 2),
+                0.2f,
+                Random.Range(-spawnHeight / 2, spawnHeight / 2)
+            );
+
+            
+            if (Physics.Raycast(spawnPoint + Vector3.up * 2, Vector3.down, out RaycastHit hit, 5f, groundLayer))
+            {
+                spawnPoint.y = hit.point.y;
+            }
+
+            attempt++;
+
+           
+        } while (Physics.CheckSphere(spawnPoint, 1f, groundLayer) && attempt < maxAttempts);
 
         return spawnPoint;
     }

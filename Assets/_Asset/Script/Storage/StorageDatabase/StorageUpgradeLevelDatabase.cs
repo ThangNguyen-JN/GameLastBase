@@ -8,3 +8,4 @@ public class StorageUpgradeLevelDatabase : ScriptableObject
 {
     public List<StorageUpgradeLevel> storageUpLevel = new List<StorageUpgradeLevel>();
 }
+

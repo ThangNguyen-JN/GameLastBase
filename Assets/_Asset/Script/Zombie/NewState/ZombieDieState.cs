@@ -7,9 +7,7 @@ public class ZombieDieState : IZombieState
     public void EnterState(ZomManager zombie)
     {
         Debug.Log("Zombie is dying...");
-        zombie.movement.StopMoving();
         zombie.movement.ZombieDie();
-        
 
         if (zombie.anim != null)
         {

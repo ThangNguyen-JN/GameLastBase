@@ -12,9 +12,12 @@ public class WorkerManager : MonoBehaviour
     public QuantityResourceWorker quantityResource;
     public StorageQuantity storageQuantity;
     private IWorkerState currentState;
+
+    public string resourceType;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(gameObject.name + " is using SafeZoneChecker: " + safeZoneChecker.gameObject.name);
         ChangeState(new WorkerIdleState());
     }
 
@@ -44,7 +47,7 @@ public class WorkerManager : MonoBehaviour
 
     public GameObject GetNearestResourcePosition() // tim t/nguyen vi tri gan nhat
     {
-        return safeZoneChecker.GetNearestResource(transform.position);
+        return safeZoneChecker.GetNearestResource(transform.position, resourceType);
     }
 
     public void MoveToResource(GameObject resource) // di chuyen den vi tri t/nguyen

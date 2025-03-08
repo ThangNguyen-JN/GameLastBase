@@ -5,7 +5,7 @@ using UnityEngine;
 public class SafeZoneChecker : MonoBehaviour
 {
     public List<GameObject> resourcesInZone = new List<GameObject>();
-    public string resourceTag;
+    public List<string> resourceTag;
 
     private void OnEnable()
     {
@@ -40,7 +40,7 @@ public class SafeZoneChecker : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag(resourceTag))
+            if (resourceTag.Contains(collider.tag)) 
             {
                 resourcesInZone.Add(collider.gameObject);
             }
@@ -56,7 +56,7 @@ public class SafeZoneChecker : MonoBehaviour
     
 
 
-    public GameObject GetNearestResource(Vector3 position)
+    public GameObject GetNearestResource(Vector3 position, string requiredTag)
     {
         RemoveNullResource();
         if (resourcesInZone.Count == 0) return null;
@@ -65,7 +65,7 @@ public class SafeZoneChecker : MonoBehaviour
 
         foreach (GameObject resource in resourcesInZone)
         {
-            if (resource == null) continue;
+            if (resource == null || resource.tag != requiredTag) continue;
 
             float distance = Vector3.Distance(position, resource.transform.position);
             if ( distance < minDistance)

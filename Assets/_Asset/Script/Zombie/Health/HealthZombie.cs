@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HealthZombie : HealthManager
 {
@@ -35,8 +36,6 @@ public class HealthZombie : HealthManager
         isDead = true;
         onDead?.Invoke(true);
 
-        Destroy(gameObject);
-
         if (dropItem != null)
         {
             dropItem.DropItems(transform.position);
@@ -56,6 +55,15 @@ public class HealthZombie : HealthManager
                 zomManager.ChangeState(new ZombieDieState());
             }
         }
+
+        NavMeshAgent agent = GetComponentInParent<NavMeshAgent>();
+        if (agent != null) 
+        {
+            agent.enabled = false;
+        }
+
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
    

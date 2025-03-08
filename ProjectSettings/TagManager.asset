@@ -25,6 +25,12 @@ TagManager:
   - ItemIron
   - ItemRope
   - ItemBattery
+  - StoneResource
+  - IronResource
+  - DetailResource
+  - FuelResource
+  - RopeResource
+  - BatteryResource
   layers:
   - Default
   - TransparentFX
@@ -33,7 +39,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Worker
   - 
   - Ground
   - Enemy

@@ -57,6 +57,15 @@ public class TurretUpgradeManager : MonoBehaviour
         {
             areaDetectTrigger.radius += 1;
         }
+
+        if (currentLevel == 1)
+        {
+            QuestManager.Instance.UpdateQuestProgress("UnlockTurretZone1", 1);
+        }
+        if (currentLevel > 1) 
+        {
+            QuestManager.Instance.UpdateQuestProgress("UpgradeTurretZone1", currentLevel);
+        }
         SaveTurretData();
 
     }    

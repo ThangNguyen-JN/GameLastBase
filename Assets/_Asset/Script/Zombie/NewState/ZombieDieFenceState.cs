@@ -7,7 +7,6 @@ public class ZombieDieFenceState : IZombieState
     public void EnterState(ZomManager zombie)
     {
         Debug.Log("Zombie is die by electro");
-        zombie.movement.StopMoving();
         zombie.movement.ZombieDie();
 
 

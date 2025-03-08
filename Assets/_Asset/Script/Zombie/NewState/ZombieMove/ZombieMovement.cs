@@ -7,6 +7,7 @@ public class ZombieMovement : MonoBehaviour
 {
     public Animator anim;
     public NavMeshAgent agent;
+    public bool isDead = false;
 
     public void Update()
     {
@@ -17,26 +18,57 @@ public class ZombieMovement : MonoBehaviour
         else
         {
             anim.SetBool("isMoving", false);
-        } 
-            
+        }
+
     }
 
-    public void MoveToPlayer (Vector3 targetPosition)
+    public void MoveToPlayer(Vector3 targetPosition)
     {
+        if (isDead) return;
+        if (!gameObject.activeInHierarchy || agent == null) return;
+        if (!agent.enabled)
+        {
+            Debug.LogError("NavMeshAgent is disabled!", gameObject);
+            return;
+        }
+
+        if (!agent.isOnNavMesh)
+        {
+            Debug.LogError("Zombie is not on NavMesh!", gameObject);
+            return;
+        }
         agent.SetDestination(targetPosition);
     }
 
     public void StopMoving()
     {
+        if (isDead) return;
+        if (!gameObject.activeInHierarchy || agent == null) return;
+        if (!agent.enabled || !agent.isOnNavMesh) return;
 
+        agent.isStopped = true;
         agent.ResetPath();
+    }
+
+    public void StopMovingWhenDead()
+    {
+        if (!gameObject.activeInHierarchy || agent == null) return;
+
+        if (agent.enabled)
+        {
+            if (agent.isOnNavMesh)
+            {
+                agent.ResetPath();
+            }
+            agent.enabled = false;
+        }
     }
 
     public void ZombieDie()
     {
-        //agent.ResetPath();
-        agent.speed = 0;
-        agent.angularSpeed = 0;
+        if (isDead) return;
 
+        isDead = true;
+        StopMovingWhenDead();
     }
 }
