@@ -15,29 +15,29 @@ MonoBehaviour:
   resources:
   - resourceName: ItemSkull
     icon: {fileID: 21300000, guid: eceebebca2c14a048bca4753aa223e21, type: 2}
-    amount: 20
+    amount: 0
     maxAmount: 20
     unlock: 1
   - resourceName: ItemWood
     icon: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-    amount: 17
+    amount: 0
     maxAmount: 20
     unlock: 1
   - resourceName: ItemStone
     icon: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
     amount: 0
     maxAmount: 20
-    unlock: 0
+    unlock: 1
   - resourceName: ItemIron
     icon: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
     amount: 0
     maxAmount: 20
-    unlock: 0
+    unlock: 1
   - resourceName: ItemDetail
     icon: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-    amount: 20
+    amount: 0
     maxAmount: 20
-    unlock: 0
+    unlock: 1
   - resourceName: ItemFuel
     icon: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
     amount: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 817cbdb9e7c8db24fa1b75be2967d6aa, type: 2}
     amount: 0
     maxAmount: 20
-    unlock: 0
+    unlock: 1
   - resourceName: ItemBattery
     icon: {fileID: 21300000, guid: 4fb6c746908350046943b038f88d3109, type: 2}
     amount: 0
     maxAmount: 20
-    unlock: 0
+    unlock: 1

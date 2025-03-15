@@ -9,6 +9,8 @@ public class TurretGunSystem : GunBase
     public GameObject bulletPrefab;
     public Transform firePoint;
     public Transform parentBullet;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     private GameObject currentTarget;
 
@@ -26,6 +28,14 @@ public class TurretGunSystem : GunBase
         if (damageTurretGun != null && target != null)
         {
             damageTurretGun.DealDamage(target);
+        }
+    }
+
+    public void PlayAudio()
+    {
+        if (audioSource != null && audioClip != null)
+        {
+            audioSource.PlayOneShot(audioClip);
         }
     }
 

@@ -6,15 +6,18 @@ using UnityEngine;
 public class UnlockTrigger : MonoBehaviour
 {
     public event Action<int> ChangeResourceUnlock;
-    private int currentResource = 3;
+    [SerializeField]private int currentResource;
+    public int maxResource;
     public string resourceUnlocked;
+    public string nameQuest;
+    public string nameSaveUnlock;
     
     public int CurrentResource
     {
         get { return currentResource; }
         set
         {
-            currentResource = Mathf.Clamp(value, 0, 3);
+            currentResource = Mathf.Clamp(value, 0, maxResource);
             ChangeResourceUnlock?.Invoke(currentResource);
         }
 
@@ -48,8 +51,8 @@ public class UnlockTrigger : MonoBehaviour
 
         if (CurrentResource <= 0)
         {
-            QuestManager.Instance.UpdateQuestProgress("MainRoom", 1);
-            PlayerPrefs.SetInt("Unlock_MainRoom", 1);
+            QuestManager.Instance.UpdateQuestProgress(nameQuest, 1);
+            PlayerPrefs.SetInt(nameSaveUnlock, 1);
             PlayerPrefs.Save();
             mainRoom.ShowMainRoom();
             

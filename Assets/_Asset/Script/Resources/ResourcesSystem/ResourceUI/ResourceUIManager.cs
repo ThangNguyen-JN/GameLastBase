@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResourceUIManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ResourceUIManager : MonoBehaviour
     public string resourceName;
     //thanh phan giao dien UI
     public Image iconUI;
-    public Text amountTextUI;
+    public TextMeshProUGUI amountTextUI;
     
     public ResourceDatabase resourceDatabase;
 
@@ -52,7 +53,7 @@ public class ResourceUIManager : MonoBehaviour
     {
         if (amountTextUI != null)
         {
-            amountTextUI.text = $"{resource.amount} / {resource.maxAmount}";
+            amountTextUI.text = $"{resource.amount}/{resource.maxAmount}";
         }
     }
 }

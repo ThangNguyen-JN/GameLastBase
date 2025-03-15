@@ -441,6 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 120649838476485492}
+  - component: {fileID: 8872398968982981742}
   m_Layer: 0
   m_Name: MetalExtractionResource
   m_TagString: Untagged
@@ -467,6 +468,21 @@ Transform:
   - {fileID: 2165473269674991199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &8872398968982981742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449246158209896298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613d6f578c26a234396373e05e264df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 9113660624260063927}
+  parent: {fileID: 120649838476485492}
+  respawnTime: 30
 --- !u!1 &1792005359101699200
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,6 +4164,7 @@ MonoBehaviour:
   tree2: {fileID: 61897796498007435}
   tree1: {fileID: 6705421068339123622}
   tree0: {fileID: 4902441538021732537}
+  respawnTime: 5
 --- !u!1 &8683422511431294924
 GameObject:
   m_ObjectHideFlags: 0

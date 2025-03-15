@@ -17,43 +17,43 @@ MonoBehaviour:
     requiredResources:
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 2
+      quantilyResource: 28
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 2
+      quantilyResource: 18
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-      quantilyResource: 0
+      quantilyResource: 16
   - levelTurret: Turret 2
     requiredResources:
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 3
+      quantilyResource: 30
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 3
+      quantilyResource: 25
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-      quantilyResource: 3
+      quantilyResource: 22
   - levelTurret: Turret 3
     requiredResources:
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 4
+      quantilyResource: 35
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 4
+      quantilyResource: 28
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-      quantilyResource: 4
+      quantilyResource: 26
   - levelTurret: Turret 4
     requiredResources:
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 5
+      quantilyResource: 40
     - nameResource: ItemFuel
       imageResource: {fileID: 21300000, guid: bf78af12504fc1348b8dabf22fd1edbf, type: 2}
-      quantilyResource: 5
+      quantilyResource: 35
     - nameResource: ItemDetail
       imageResource: {fileID: 21300000, guid: f7a0c0a57af4fec4bb655cc6b7a4f5bc, type: 2}
-      quantilyResource: 5
+      quantilyResource: 32

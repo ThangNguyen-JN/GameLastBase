@@ -6,24 +6,7 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    //private static CoinManager instance;
-    //public static CoinManager Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //        {
-    //            instance = FindObjectOfType<CoinManager>();
-    //            if (instance == null)
-    //            {
-    //                GameObject coinManagerObject = new GameObject("CoinManager");
-    //                instance = coinManagerObject.AddComponent<CoinManager>();
-
-    //            }
-    //        }
-    //        return instance;
-    //    }
-    //}
+    
     public event Action<int> CoinChangeUpdate;
     private int currentCoin;
 
@@ -37,16 +20,19 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    //private void Awake()
-    //{
-    //    if (instance != null && instance != this)
-    //    {
-    //        Destroy(gameObject); 
-    //        return;
-    //    }
+    private int totalCoinsCollected;
 
-    //    instance = this;
-    //}
+    public int TotalCoinsCollected
+    {
+        get { return totalCoinsCollected; }
+        set
+        {
+            totalCoinsCollected = value;
+            PlayerPrefs.SetInt("TotalCoinsCollected", totalCoinsCollected); // Luu lai tong so coin
+            PlayerPrefs.Save();
+        }
+    }
+
 
     private void Start()
     {
@@ -56,7 +42,9 @@ public class CoinManager : MonoBehaviour
     public void AddCoin(int amount)
     {
         Coin += amount;
+        TotalCoinsCollected += amount;
         SaveCoin();
+        //GoogleLeaderboard.Instance.PostScoreToLeaderboard(TotalCoinsCollected);
     }
 
     public void SpendCoin(int amount)
@@ -68,12 +56,14 @@ public class CoinManager : MonoBehaviour
     public void SaveCoin()
     {
         PlayerPrefs.SetInt("CurrentCoin", Coin);
+        PlayerPrefs.SetInt("TotalCoinsCollected", TotalCoinsCollected);
         PlayerPrefs.Save();
     }    
 
     public void LoadCoin()
     {
         Coin = PlayerPrefs.GetInt("CurrentCoin", 0);
+        TotalCoinsCollected = PlayerPrefs.GetInt("TotalCoinsCollected", 0);
     }
 
     public void OnApplicationQuit()

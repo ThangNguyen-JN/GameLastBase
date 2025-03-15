@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1481369750141892408}
+  - component: {fileID: 3870417869769971823}
   m_Layer: 0
   m_Name: OB_Generator
   m_TagString: Untagged
@@ -118,6 +119,21 @@ Transform:
   - {fileID: 338242261088809002}
   m_Father: {fileID: 9052229367561393050}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &3870417869769971823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523668730522530628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613d6f578c26a234396373e05e264df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 5645465097689214532}
+  parent: {fileID: 1481369750141892408}
+  respawnTime: 30
 --- !u!1 &1153530511658504147
 GameObject:
   m_ObjectHideFlags: 0
@@ -12715,6 +12731,7 @@ MonoBehaviour:
   tree2: {fileID: 5147319562157619112}
   tree1: {fileID: 8887113460360247216}
   tree0: {fileID: 3956632881677531902}
+  respawnTime: 5
 --- !u!1 &7330264385139262328
 GameObject:
   m_ObjectHideFlags: 0

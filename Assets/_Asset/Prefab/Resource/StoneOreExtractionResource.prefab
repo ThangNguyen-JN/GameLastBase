@@ -2456,6 +2456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540260720139533}
+  - component: {fileID: 3559788103282355829}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -2482,6 +2483,21 @@ Transform:
   - {fileID: 4564416525540997}
   m_Father: {fileID: 4930757932109973}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &3559788103282355829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470826394655929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613d6f578c26a234396373e05e264df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 1689540845147314}
+  parent: {fileID: 4540260720139533}
+  respawnTime: 30
 --- !u!1 &1538727721015583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,7 +2646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4476745298462786
 Transform:
   m_ObjectHideFlags: 0
@@ -7592,6 +7608,7 @@ MonoBehaviour:
   tree2: {fileID: 1993671774613362}
   tree1: {fileID: 1832598666730825}
   tree0: {fileID: 1919042177873223}
+  respawnTime: 5
 --- !u!1 &1765320523881914
 GameObject:
   m_ObjectHideFlags: 0

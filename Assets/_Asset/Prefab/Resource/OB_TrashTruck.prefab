@@ -716,6 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5871479174265841612}
+  - component: {fileID: 1970914641923327864}
   m_Layer: 0
   m_Name: OB_TrashTruck
   m_TagString: Untagged
@@ -741,6 +742,21 @@ Transform:
   - {fileID: 3395746026622049878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -52.246, z: 0}
+--- !u!114 &1970914641923327864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558199384247543858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613d6f578c26a234396373e05e264df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 7536992234646784152}
+  parent: {fileID: 5871479174265841612}
+  respawnTime: 30
 --- !u!1 &4615300083513611367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1828,7 @@ MonoBehaviour:
   tree2: {fileID: 6847043732283814402}
   tree1: {fileID: 6734848471529690997}
   tree0: {fileID: 250150540003750955}
+  respawnTime: 5
 --- !u!1 &7661881954524854222
 GameObject:
   m_ObjectHideFlags: 0

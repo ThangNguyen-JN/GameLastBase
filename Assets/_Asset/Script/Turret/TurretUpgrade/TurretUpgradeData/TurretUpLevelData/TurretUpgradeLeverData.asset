@@ -17,36 +17,36 @@ MonoBehaviour:
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 0
+      quantilyResource: 9
   - levelTurret: Turret 2
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 3
+      quantilyResource: 12
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 3
+      quantilyResource: 9
   - levelTurret: Turret 3
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 4
+      quantilyResource: 18
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 4
+      quantilyResource: 12
   - levelTurret: Turret 4
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 5
+      quantilyResource: 26
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 5
+      quantilyResource: 18
   - levelTurret: Turret 5
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 6
+      quantilyResource: 30
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 6
+      quantilyResource: 25

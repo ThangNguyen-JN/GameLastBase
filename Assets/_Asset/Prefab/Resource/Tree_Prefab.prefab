@@ -2585,11 +2585,12 @@ MonoBehaviour:
   dropRadius: 2
   dropPrefab: {fileID: 1109757242703476, guid: cc445be8133926040af0bbacabb1de37, type: 3}
   dropPosition: {fileID: 5529671578804470312}
-  treeResource: {fileID: 1875231538390247387}
+  treeResource: {fileID: 3270195841336504549}
   treeFull: {fileID: 3730837298004432988}
   tree2: {fileID: 8833576059647527723}
   tree1: {fileID: 7401009258344583595}
   tree0: {fileID: 4572468398160482673}
+  respawnTime: 5
 --- !u!1 &1881893029324491799
 GameObject:
   m_ObjectHideFlags: 0

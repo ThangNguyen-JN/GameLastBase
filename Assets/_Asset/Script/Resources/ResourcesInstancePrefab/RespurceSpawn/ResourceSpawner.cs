@@ -9,6 +9,7 @@ public class ResourceSpawner : MonoBehaviour
     private GameObject currentResource;
     public List<Transform> spawnPoints;
     private Dictionary<Transform, GameObject> spawnedResources = new Dictionary<Transform, GameObject>();
+    public Transform parentInstance;
 
     public void Start()
     {
@@ -39,7 +40,7 @@ public class ResourceSpawner : MonoBehaviour
             Destroy(spawnedResources[spawnPoint]);
         }
 
-        GameObject newResource = Instantiate(resourcePrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject newResource = Instantiate(resourcePrefab, spawnPoint.position, spawnPoint.rotation, parentInstance);
         spawnedResources[spawnPoint] = newResource;
     }
 

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +9,20 @@ public class ResourceObject : MonoBehaviour
     public float dropRadius = 2f;
     public GameObject dropPrefab;
     public Transform dropPosition;
-
     public GameObject treeResource;
     public GameObject treeFull;
     public GameObject tree2;
     public GameObject tree1;
     public GameObject tree0;
     public static event Action<ResourceObject> OnResourceDestroyed;
+
+    public float respawnTime = 5f;
+    private Vector3 initialPosition;
+
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
 
     public void Harvest()
     {
@@ -39,9 +46,15 @@ public class ResourceObject : MonoBehaviour
             else if (resourceCount <= 0)
             {
                 OnResourceDestroyed?.Invoke(this);
+                tree0.SetActive(true);
+                ResourceSpawn spawner = FindObjectOfType<ResourceSpawn>();
+                if (spawner != null)
+                {
+                    spawner.StartRespawn();
+                }
                 Destroy(treeResource);
                 
-                tree0.SetActive(true);
+                
             }
            
         }
@@ -57,5 +70,7 @@ public class ResourceObject : MonoBehaviour
         }
     }
 
-     
+   
+
+
 }

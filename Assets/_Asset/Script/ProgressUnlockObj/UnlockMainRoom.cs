@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UnlockMainRoom : MonoBehaviour
 {
-
+    public string nameSaveUnlock;
     public List<GameObject> mainRoom = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("Unlock_MainRoom", 0) == 1)
+        if (PlayerPrefs.GetInt(nameSaveUnlock, 0) == 1)
         {
             ShowMainRoom();
         }

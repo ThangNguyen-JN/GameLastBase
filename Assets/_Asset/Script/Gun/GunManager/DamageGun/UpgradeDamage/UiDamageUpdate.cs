@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UiDamageUpdate : MonoBehaviour
 {
-    [SerializeField] private Text coinCostText;
+    [SerializeField] private TextMeshProUGUI coinCostText;
     public DamageUpgradeSystem damageUpdateSystem;
     // Start is called before the first frame update
     void Start()

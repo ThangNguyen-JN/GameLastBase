@@ -17,43 +17,43 @@ MonoBehaviour:
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 2
+      quantilyResource: 22
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: b4e1be8ab4ac27846924a044f80806f7, type: 2}
-      quantilyResource: 2
+      quantilyResource: 20
     - nameResource: ItemIron
-      imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 0
+      imageResource: {fileID: 21300000, guid: b16d83511c8eb3b48bd90097498746d5, type: 3}
+      quantilyResource: 12
   - levelTurret: Turret 2
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 3
+      quantilyResource: 25
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 3
+      quantilyResource: 23
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 1
+      quantilyResource: 18
   - levelTurret: Turret 3
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 4
+      quantilyResource: 29
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 4
+      quantilyResource: 26
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 4
+      quantilyResource: 25
   - levelTurret: Turret 4
     requiredResources:
     - nameResource: ItemWood
       imageResource: {fileID: 21300000, guid: 467b22cd6239efe4d8be73d4146bc1f8, type: 2}
-      quantilyResource: 5
+      quantilyResource: 35
     - nameResource: ItemStone
       imageResource: {fileID: 21300000, guid: fb5476d952b908d499f33eff6299c945, type: 3}
-      quantilyResource: 5
+      quantilyResource: 32
     - nameResource: ItemIron
       imageResource: {fileID: 21300000, guid: 0d432f00632a7c841bc9a3daf903e97f, type: 2}
-      quantilyResource: 5
+      quantilyResource: 30

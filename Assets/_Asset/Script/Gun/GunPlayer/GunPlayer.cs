@@ -8,6 +8,8 @@ public class GunPlayer : GunBase
     public TargetManager targetManager;
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     private GameObject currentTarget;
 
@@ -25,9 +27,17 @@ public class GunPlayer : GunBase
             damageHandler.DealDamage(target);
         }
     }
+    public void PlaySound()
+    {
+        if (audioSource != null && audioClip != null)
+        {
+            audioSource.PlayOneShot(audioClip); // Phát âm thanh
+        }
+    }
 
     public override void Shoot()
     {
+        PlaySound();
         if (targetManager != null)
         {
             currentTarget = targetManager.FindClosestTarget(transform.position);
